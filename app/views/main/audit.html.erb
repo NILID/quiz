@@ -1,1 +1,16 @@
 <h1>Main#audit</h1>
+
+<ol>
+  <% @audits.each do |a| %>
+    <li>
+      <%= a.created_at %>
+      <%= a.user.email %>
+      <%= a.action %>
+      <%= a.auditable_type %>
+      #<%= a.auditable_id %>
+      <% if a.auditable %>
+        <%= a.auditable.title %>
+      <% end %>
+    </li>
+  <% end %>
+</ol>

@@ -6,5 +6,6 @@ class MainController < ApplicationController
 
   def audit
     authorize :main, :audit?
+    @audits = Audit.order(created_at: :desc)
   end
 end
