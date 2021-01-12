@@ -24,14 +24,6 @@ body {
   padding: 10px 0;
 }
 
-.row {
-  padding: 0 20px;
-  display: flex;
-  flex-direction: row;
-}
-
-.col {}
-
 .bg-white {
   background: #fff;
 }
@@ -80,4 +72,8 @@ footer {
 
 ul.inline-list li{
   display: inline;
+}
+
+.text-right {
+  text-align: right;
 }

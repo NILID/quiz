@@ -1,14 +1,16 @@
-= raw pagy_nav(@pagy)
-%table
-  %thead
-    %tr
-      %th ID
-      %th Audit
-  %tbody
-    - @audits.each do |a|
-      %tr
-        %td
-          = a.id
-        %td
-          = a.output
-= raw pagy_nav(@pagy)
+.row
+  .col
+    = raw pagy_nav(@pagy)
+    %table
+      %thead
+        %tr
+          %th ID
+          %th Audit
+      %tbody
+        - @audits.each do |a|
+          %tr
+            %td
+              = a.id
+            %td
+              = a.output
+    = raw pagy_nav(@pagy)

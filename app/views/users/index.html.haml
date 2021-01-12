@@ -1,6 +1,8 @@
-%ul
-  - @users.each do |user|
-    %li
-      = user.email
-      - if policy(user).edit?
-        = link_to 'edit', edit_user_path(user)
+.row
+  .col
+    %ul
+      - @users.each do |user|
+        %li
+          = user.email
+          - if policy(user).edit?
+            = link_to 'edit', edit_user_path(user)

@@ -9,26 +9,21 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %header.row
-      .col
-        = link_to 'QUIZ', root_url, class: 'header-logo'
-      .col
-        %ul.inline-list.header-menu
-          %li{class: params[:controller] == 'questions' ? 'active' : nil}
-            = link_to 'Questions', questions_path
-          - if policy(User).index?
-            %li{class: (%w[devise/sessions users].include? params[:controller]) ? 'active' : nil }
-              = link_to 'Users',     users_path
-          - if policy(:main).audit?
-            %li{class: params[:action] == 'audit' ? 'active' : nil}
-              = link_to 'Audit',     audit_path
-      .col
-        = render 'users/userbar'
+      = link_to 'QUIZ', root_url, class: 'header-logo'
+      %ul.inline-list.header-menu
+        %li{class: params[:controller] == 'questions' ? 'active' : nil}
+          = link_to 'Questions', questions_path
+        - if policy(User).index?
+          %li{class: (%w[devise/sessions users].include? params[:controller]) ? 'active' : nil }
+            = link_to 'Users', users_path
+        - if policy(:main).audit?
+          %li{class: params[:action] == 'audit' ? 'active' : nil}
+            = link_to 'Audit', audit_path
+      = render 'users/userbar'
     .content.bg-white
       .row
-        .float-right
         %p.notice= notice
         %p.alert= alert
-      .row
-        = yield
+      = yield
     %footer
       .float-right 2021@quiz

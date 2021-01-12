@@ -1,12 +1,18 @@
-%h1= @question.title
-%p
-  %strong Author:
-  = @question.author.email
-%p
-  = form_for @question, url: check_question_path(@question), method: :put do |f|
-    = f.collection_radio_buttons :answers, @question.answers, :to_s, :to_s
-    = f.submit
-- if policy(@question).edit?
-  = link_to 'Edit', edit_question_path(@question)
-  |
-= link_to 'Back', questions_path
+.row
+  .col
+    %h1= @question.title
+  .col.text-right
+    %strong Author:
+    = @question.author.email
+
+.row
+  .col
+    = form_for @question, url: check_question_path(@question), method: :put do |f|
+      = f.collection_radio_buttons :answers, @question.answers, :to_s, :to_s
+      = f.submit
+.row
+  .col
+    - if policy(@question).edit?
+      = link_to 'Edit', edit_question_path(@question)
+      |
+    = link_to 'Back', questions_path
