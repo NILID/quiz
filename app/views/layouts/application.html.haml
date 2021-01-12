@@ -21,9 +21,11 @@
             = link_to 'Audit', audit_path
       = render 'users/userbar'
     .content.bg-white
-      .row
-        %p.notice= notice
-        %p.alert= alert
+      - if flash.any?
+        .row#flash
+          .col
+            - flash.each do |type, msg|
+              = content_tag :div, msg, class: type
       = yield
     %footer
       .float-right 2021@quiz

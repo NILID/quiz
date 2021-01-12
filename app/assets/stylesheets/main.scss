@@ -16,6 +16,9 @@ html {
 }
 
 body {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 19px;
   width: 100%;
   padding: 0 20px;
 }
@@ -76,4 +79,9 @@ ul.inline-list li{
 
 .text-right {
   text-align: right;
+}
+
+#flash {
+  .alert  {color: red;}
+  .notice {color: green;}
 }
