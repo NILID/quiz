@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_03_155044) do
+ActiveRecord::Schema.define(version: 2021_01_12_055858) do
 
   create_table "audits", force: :cascade do |t|
     t.integer "auditable_id"
@@ -39,6 +39,10 @@ ActiveRecord::Schema.define(version: 2021_01_03_155044) do
     t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "answer1", default: "", null: false
+    t.string "answer2", default: "", null: false
+    t.string "answer3", default: "", null: false
+    t.string "answer4", default: "", null: false
     t.index ["author_id"], name: "index_questions_on_author_id"
   end
 

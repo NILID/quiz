@@ -17,8 +17,13 @@ RSpec.describe 'Questions', type: :request do
         expect(response).to redirect_to(questions_path)
       end
 
+      it 'destroys with audits count +1' do
+        expect{ delete question_path(question) }.to change(question.audits, :count).by(1)
+      end
+
       it 'updates' do
-        put question_path(question, question: { title: 'New title' })
+        expect{ put question_path(question, question: { title: 'New title' })}
+          .to change(question.audits, :count).by(1)
         question.reload
         expect(response).to redirect_to(question)
       end

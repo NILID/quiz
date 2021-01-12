@@ -16,6 +16,13 @@
     <%= form.text_area :title %>
   </div>
 
+  <% %i[answer1 answer2 answer3 answer4].each do |answer| %>
+    <div class="field">
+      <%= form.label answer %>
+      <%= form.text_area answer %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
