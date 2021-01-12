@@ -1,16 +1,80 @@
+@import 'mixins';
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 
 html {
   display: flex;
-  background: #ccc
+  background: asset-url('greydots.png') rgba(0, 0, 0, 0.4);
+  background-repeat: repeat;
 }
 
 body {
-  background: #fff;
   width: 100%;
+  padding: 0 20px;
+}
+
+.content {
+  padding: 10px 0;
+}
+
+.row {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.col {}
+
+.bg-white {
+  background: #fff;
+}
+
+.float-right {
+  float: right;
+  clear: right;
+}
+
+header{
+  margin: 20px 0;
+  color: #fff;
+  line-height: 25pt;
+  vertical-align: middle;
+  justify-content: space-between;
+}
+
+header a{
+  text-decoration: none;
+  &:hover {
+    background: none;
+  }
+  &, &:hover, &:visited {
+    color: #fff;
+  }
+}
+
+.header-menu {
+  a:hover {border-bottom: 1px solid #fff;}
+  li.active a{border-bottom: 1px solid #fff;}
+  li {padding: 0 10px;}
+}
+
+.header-logo {
+  font-size: 25pt;
+  font-weight: 600;
+}
+
+footer {
+  color: #fff;
+  margin-top: 10px;
+}
+
+ul.inline-list li{
+  display: inline;
 }

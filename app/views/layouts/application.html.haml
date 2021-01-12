@@ -8,12 +8,25 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %div{:style => "float:right"}
-      %ul
-        %li= link_to 'Users', users_path
-        %li= link_to 'Questions', questions_path
-        %li= link_to 'Audit', audit_path
-    %p.notice= notice
-    %p.alert= alert
-    = render 'users/userbar'
-    = yield
+    %header.row
+      .col
+        = link_to 'QUIZ', root_url, class: 'header-logo'
+      .col
+        %ul.inline-list.header-menu
+          %li{class: (%w[devise/sessions users].include? params[:controller]) ? 'active' : nil }
+            = link_to 'Users',     users_path
+          %li{class: params[:controller] == 'questions' ? 'active' : nil}
+            = link_to 'Questions', questions_path
+          %li{class: params[:action] == 'audit' ? 'active' : nil}
+            = link_to 'Audit',     audit_path
+      .col
+        = render 'users/userbar'
+    .content.bg-white
+      .row
+        .float-right
+        %p.notice= notice
+        %p.alert= alert
+      .row
+        = yield
+    %footer
+      .float-right 2021@quiz
