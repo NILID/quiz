@@ -44,20 +44,22 @@ RSpec.describe 'Users', type: :request do
   end
 
   describe 'unreg user should' do
-    after(:each) do
-      expect(response).to redirect_to(new_user_session_path)
-    end
-
     it 'returns index' do
       get users_path
     end
 
-    it 'edit user' do
-      get edit_user_path(user)
-    end
+    describe 'not' do
+      after(:each) do
+        expect(response).to redirect_to(new_user_session_path)
+      end
 
-    it 'updates user' do
-      put user_path(user, user: { role: 'moderator' })
+      it 'edit user' do
+        get edit_user_path(user)
+      end
+
+      it 'updates user' do
+        put user_path(user, user: { role: 'moderator' })
+      end
     end
   end
 

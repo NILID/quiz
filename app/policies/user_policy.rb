@@ -10,11 +10,11 @@ class UserPolicy < ApplicationPolicy
   end
 
   def edit?
-    @user.admin?
+    @user && @user.admin?
   end
 
   def update?
-    @user.admin?
+    @user && @user.admin?
   end
 
 end
