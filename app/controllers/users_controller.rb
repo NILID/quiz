@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     authorize @user
 
     if @user.update(user_params)
-      redirect_to root_url, notice: 'User was updated'
+      redirect_to users_url, notice: 'User was updated'
     else
       render action: 'edit'
     end
