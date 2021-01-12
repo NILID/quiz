@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Quiz
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %div{:style => "float:right"}
+      %ul
+        %li= link_to 'Users', users_path
+        %li= link_to 'Questions', questions_path
+        %li= link_to 'Audit', audit_path
+    %p.notice= notice
+    %p.alert= alert
+    = render 'users/userbar'
+    = yield

@@ -1,5 +1,0 @@
-<%= form_for @user do |f| %>
-  <%= f.label :role%>
-  <%= f.select :role, User.roles.keys.map {|role| [role.titleize,role]} %>
-  <%= f.submit%>
-<% end %>
