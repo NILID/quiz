@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :check]
   after_action :verify_authorized
 
   def index
@@ -16,6 +16,11 @@ class QuestionsController < ApplicationController
   def new
     @question = Question.new
     authorize @question
+  end
+
+  def check
+    authorize @question
+    redirect_to @question, notice: 'Question was successfully checked.'
   end
 
   def edit

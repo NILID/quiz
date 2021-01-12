@@ -7,6 +7,10 @@ class QuestionPolicy < ApplicationPolicy
     true
   end
 
+  def check?
+    true
+  end
+
   def new?
     @user && (@user.admin? || @user.moderator?)
   end

@@ -51,6 +51,11 @@ RSpec.describe 'Questions', type: :request do
         expect(response).to be_successful
         expect(response).to render_template(:show)
       end
+
+      it 'returns check' do
+        put check_question_path(question)
+        expect(response).to redirect_to(question)
+      end
     end
   end
 
