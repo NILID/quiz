@@ -26,7 +26,7 @@ class Question < ApplicationRecord
     # - with capitlize first character
 
     %i[answer1 answer2 answer3 answer4].each do |answer|
-      self[answer] = self[answer].capitalize.gsub(/\s+/, '')
+      self[answer] = self[answer].gsub(/[\\r\\n]/, '').strip.capitalize
     end
   end
 
