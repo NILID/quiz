@@ -1,16 +1,12 @@
 class Audit < Audited::Audit
 
   def output
-    case auditable_type
-    when 'Question'
-      if auditable
-        [created_at, user.email, action, auditable_type, 'with id =', auditable_id, auditable.title].join(' ')
-      else
-        [created_at, user.email, action, auditable_type, 'with id =', auditable_id].join(' ')
+    name =
+      case auditable_type
+      when 'Question' then auditable&.title
+      when 'User'     then auditable&.email
       end
-    when 'User'
-      [created_at, user, action, auditable_type, 'with id =', auditable_id, auditable.email].join(' ')
-    end
+    [created_at, user&.email, action, auditable_type, 'with id =', auditable_id, name].join(' ')
   end
 
 end

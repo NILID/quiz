@@ -1,9 +1,22 @@
 <h1>Main#audit</h1>
 
-<ol>
-  <% @audits.each do |a| %>
-    <li>
-      <%= a.output %>
-    </li>
-  <% end %>
-</ol>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Audit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @audits.each do |a| %>
+      <tr>
+        <td>
+          <%= a.id %>
+        </td>
+        <td>
+          <%= a.output %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
