@@ -61,7 +61,10 @@ header a{
 
 .header-menu {
   a:hover {border-bottom: 1px solid #fff;}
-  li.active a{border-bottom: 1px solid #fff;}
+  li.active a{
+    border-bottom: 1px solid #fff;
+    font-weight: 600;
+  }
   li {padding: 0 10px;}
 }
 
