@@ -19,7 +19,7 @@ RSpec.describe 'Users', type: :request do
 
     it 'updates user' do
       put user_path(user, user: { role: 'moderator' })
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(User)
     end
   end
 
