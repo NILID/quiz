@@ -13,7 +13,7 @@
 
   = form.fields_for :answers do |a|
     .field
-      = form.label [:answer, '№', a.options[:child_index] + 1].join(' ')
+      = a.label [:answer, '№', a.options[:child_index] + 1].join(' ')
       = a.text_field :title
       = a.check_box :correct
   .actions

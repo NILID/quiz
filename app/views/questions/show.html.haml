@@ -8,7 +8,7 @@
 .row
   .col
     = form_for @question, url: check_question_path(@question), method: :put do |f|
-      = f.collection_radio_buttons :answers, @question.answers, :to_s, :to_s
+      = f.collection_radio_buttons :answers, @question.answers.map{ |a| a.title }, :to_s, :to_s
       = f.submit 'Check'
 .row
   .col
