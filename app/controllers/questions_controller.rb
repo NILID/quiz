@@ -16,6 +16,7 @@ class QuestionsController < ApplicationController
   def new
     @question = Question.new
     authorize @question
+    4.times { @question.answers.build }
   end
 
   def check
@@ -73,6 +74,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:title, :answer1, :answer2, :answer3, :answer4)
+      params.require(:question).permit(:title, answers_attributes: [:title, :correct])
     end
 end
