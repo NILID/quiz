@@ -3,13 +3,6 @@ FactoryBot.define do
     title { Faker::Lorem.unique.paragraph }
 
     association :author, factory: :user
-
-    transient do
-      answers_count { 4 }
-    end
-
-    before(:create) do |question, evaluator|
-      create_list(:answer, evaluator.answers_count, question: question)
-    end
+    answers { build_list(:answer, 4) }
   end
 end

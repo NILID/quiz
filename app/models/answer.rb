@@ -2,7 +2,8 @@ class Answer < ApplicationRecord
   belongs_to :question
   before_validation :normalize_answer
 
-  validates :title, presence:   true
+  validates :title, presence:   true,
+                    uniqueness: { scope: :question_id }
 
   private
 
