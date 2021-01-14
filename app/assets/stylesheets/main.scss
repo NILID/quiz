@@ -11,7 +11,7 @@
 
 html {
   display: flex;
-  background: asset-url('greydots.png') rgba(0, 0, 0, 0.4);
+  background: asset-url('greydots.png') rgba(0, 50, 115, 0.4);
   background-repeat: repeat;
 }
 
@@ -24,6 +24,8 @@ body {
 }
 
 .content {
+  @include border-radius(5px);
+  @include box-shadow(0 0 15px rgba(0, 0, 0, 0.3));
   padding: 10px 0;
 }
 
