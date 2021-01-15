@@ -11,6 +11,10 @@
     = form.label :title
     = form.text_area :title
 
+  .field
+    = form.label :theme_id
+    = form.select :theme_id, Theme.order(:title).map{ |theme| [theme.title, theme.id] }, { include_blank: '== select ==' }
+
   = form.fields_for :answers do |a|
     .field
       = a.label [:answer, '№', a.options[:child_index] + 1].join(' ')

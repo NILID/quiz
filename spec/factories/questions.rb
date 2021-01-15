@@ -4,5 +4,6 @@ FactoryBot.define do
 
     association :author, factory: :user
     answers { build_list(:answer, 4) }
+    theme
   end
 end

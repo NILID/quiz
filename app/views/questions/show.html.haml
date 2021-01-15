@@ -1,6 +1,8 @@
 .row
   .col
     %h1= @question.title
+
+    = @question.theme.title
   .col.text-right
     %strong Author:
     = @question.author.email
