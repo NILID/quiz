@@ -53,7 +53,7 @@ RSpec.describe 'Questions', type: :request do
       end
 
       it 'returns check' do
-        put check_question_path(question)
+        put check_question_path(question, question: { answers: [1] })
         expect(response).to redirect_to(question)
       end
     end
