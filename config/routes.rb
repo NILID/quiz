@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       put :check
     end
   end
-  root 'main#index'
+  root 'questions#index'
   devise_for :users
   resources :users, only: %i[index edit update] do
   end
