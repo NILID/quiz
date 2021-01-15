@@ -3,6 +3,7 @@ class Question < ApplicationRecord
 
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
   has_many :answers, inverse_of: :question
+  has_one :theme
 
   validates :title, uniqueness: true,
                     presence:   true
