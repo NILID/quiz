@@ -21,7 +21,8 @@ class QuestionsController < ApplicationController
 
   def check
     authorize @question
-    redirect_to @question, notice: 'Question was successfully checked.'
+    result = @question.answers.where(correct: true).first.id.to_s == params[:question][:answers]
+    redirect_to @question, notice: "Question was successfully checked. It was #{result} answer"
   end
 
   def edit
