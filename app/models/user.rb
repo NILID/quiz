@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   audited
 
+  validates :email, uniqueness: true
+
   enum role: %i[user moderator admin]
 
   after_initialize :set_default_role, :if => :new_record?
