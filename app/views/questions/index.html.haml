@@ -1,15 +1,15 @@
 - if policy(Question).new?
   .row
     .col
-      = link_to 'New Question', new_question_path
+      = link_to t('questions.add'), new_question_path
 .row
   .col
     - if @questions.any?
       %table
         %thead
           %tr
-            %th Title
-            %th Author
+            %th= Question.human_attribute_name(:title)
+            %th= Question.human_attribute_name(:author)
             %th{:colspan => "3"}
         %tbody
           - @questions.each do |question|
@@ -17,7 +17,7 @@
               %td= link_to question.title, question
               %td= question.author.email
               - if policy(question).edit?
-                %td= link_to 'Edit', edit_question_path(question)
-                %td= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' }
+                %td= link_to t('actions.edit'), edit_question_path(question)
+                %td= link_to t('actions.del'), question, method: :delete, data: { confirm: t('actions.sure') }
     - else
       = t('shared.empty')

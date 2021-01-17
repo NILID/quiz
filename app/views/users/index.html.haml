@@ -5,4 +5,4 @@
         %li
           = user.email
           - if policy(user).edit?
-            = link_to 'edit', edit_user_path(user)
+            = link_to t('actions.edit'), edit_user_path(user)

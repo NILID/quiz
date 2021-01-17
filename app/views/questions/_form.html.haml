@@ -13,11 +13,11 @@
 
   .field
     = form.label :theme_id
-    = form.select :theme_id, Theme.order(:title).map{ |theme| [theme.title, theme.id] }, { include_blank: '== select ==' }
+    = form.select :theme_id, Theme.order(:title).map{ |theme| [theme.title, theme.id] }, { include_blank: t('actions.select') }
 
   = form.fields_for :answers do |a|
     .field
-      = a.label [:answer, '№', a.options[:child_index] + 1].join(' ')
+      = a.label :title, t('questions.answer', index: a.options[:child_index] + 1)
       = a.text_field :title
       = a.check_box :correct
   .actions

@@ -1,0 +1,16 @@
+ru:
+  activerecord:
+    models:
+      answer: ответ
+      question: вопрос
+      theme: тема
+    attributes:
+      question:
+        author: Автор
+        theme_id: Тема
+        title: Текст вопроса
+      user:
+        password: Пароль
+        password_confirmation: Повторите пароль
+        role: Роль
+        remember_me: Запомнить меня

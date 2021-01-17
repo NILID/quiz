@@ -1,0 +1,16 @@
+ru:
+  actions:
+    answer: Ответить
+    del: Удалить
+    edit: Редактировать
+    logout: Выйти
+    select: == Выбрать ==
+    sign_in: Войти
+    sign_in_title: Вход
+    sign_up: Регистрация
+    sure: Вы уверены?
+    to_sign_up: Зарегистрироваться
+  titles:
+    audit: Аудит
+    questions: Вопросы
+    users: Участники

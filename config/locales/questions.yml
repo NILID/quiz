@@ -1,0 +1,4 @@
+ru:
+  questions:
+    add: Добавить вопрос
+    answer: Ответ №%{index}
