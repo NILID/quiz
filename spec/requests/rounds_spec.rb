@@ -46,14 +46,6 @@ RSpec.describe "/rounds", type: :request do
     end
   end
 
-  describe "GET /edit" do
-    it "render a successful response" do
-      round = Round.create! valid_attributes
-      get edit_round_url(round)
-      expect(response).to be_successful
-    end
-  end
-
   describe "POST /create" do
     context "with valid parameters" do
       it "creates a new Round" do
@@ -79,51 +71,6 @@ RSpec.describe "/rounds", type: :request do
         post rounds_url, params: { round: invalid_attributes }
         expect(response).to be_successful
       end
-    end
-  end
-
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested round" do
-        round = Round.create! valid_attributes
-        patch round_url(round), params: { round: new_attributes }
-        round.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "redirects to the round" do
-        round = Round.create! valid_attributes
-        patch round_url(round), params: { round: new_attributes }
-        round.reload
-        expect(response).to redirect_to(round_url(round))
-      end
-    end
-
-    context "with invalid parameters" do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
-        round = Round.create! valid_attributes
-        patch round_url(round), params: { round: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
-  end
-
-  describe "DELETE /destroy" do
-    it "destroys the requested round" do
-      round = Round.create! valid_attributes
-      expect {
-        delete round_url(round)
-      }.to change(Round, :count).by(-1)
-    end
-
-    it "redirects to the rounds list" do
-      round = Round.create! valid_attributes
-      delete round_url(round)
-      expect(response).to redirect_to(rounds_url)
     end
   end
 end

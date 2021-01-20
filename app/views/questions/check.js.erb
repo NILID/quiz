@@ -1,2 +1,40 @@
-var div = document.getElementById('result');
-div.innerHTML = <%= @result %>;
+// mark background for current button
+//
+var button = document.getElementById('answer_' + <%= @answer_id %>);
+if (<%= @result %> == false) {
+  button.style.backgroundColor = "red";
+} else {
+  button.style.backgroundColor = "green";
+}
+
+// disable href for all links
+//
+var buttons = document.getElementsByClassName("button");
+for (var i = 0, len = buttons.length; i < len; i++) {
+    var button = buttons[i];
+    button.href="javascript:;";
+}
+
+
+// Set a fake timeout to get the highest timeout id
+// need to disable timer
+//
+var highestTimeoutId = setTimeout(";");
+for (var i = 0 ; i < highestTimeoutId ; i++) {
+    clearTimeout(i); 
+}
+
+// run timer to load nex question
+//
+var el = document.getElementById('timer-next'),
+    total = 2,
+    url = el.dataset.url
+    timeinterval = setInterval(function () {
+        total = --total;
+        el.textContent = 'Следующий вопрос через: ' + total + ' сек.';
+        if (total <= 0) {
+            clearInterval(timeinterval);
+            window.location = url;
+        }
+    }, 1000);
+

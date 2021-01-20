@@ -3,8 +3,8 @@
     %h1= question.title
 
     = question.theme.title
-    #result
-    #timer{data: {url: round_path(@round, page: @pagy.next) } } 10
+
+    #timer{data: {url: round_path(@round, page: @pagy.next) } } 15
 
   .col.text-right
     %strong
@@ -13,10 +13,17 @@
 
 .row
   .col
-    .row
-      .col
-        - question.answers[0..1].each do |answer|
-          = link_to answer.title, check_question_path(question, answer_id: answer.id), remote: true
-      .col
-        - question.answers[2..3].each do |answer|
-          = link_to answer.title, check_question_path(question, answer_id: answer.id), remote: true
+    - question.results.each do |result|
+      = result
+
+.row
+  - question.answers.shuffle.each do |answer|
+    .col-6
+      = link_to answer.title,
+        check_question_path(question, answer_id: answer.id),
+        remote: true,
+        class: 'button',
+        id: dom_id(answer)
+.row
+  .col
+    #timer-next{data: {url: round_path(@round, page: @pagy.next) } }

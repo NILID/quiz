@@ -6,7 +6,8 @@ class Question < ApplicationRecord
   belongs_to :theme,  counter_cache: true
 
   has_many :answers, inverse_of: :question
-  has_and_belongs_to_many :rounds
+  has_many :results
+  has_many :rounds, through: :results
 
   validates :title, uniqueness: true,
                     presence:   true

@@ -21,7 +21,8 @@ class QuestionsController < ApplicationController
 
   def check
     authorize @question
-    @result = @question.answers.where(correct: true).first.id.to_s == params[:answer_id]
+    @answer_id = params[:answer_id]
+    @result = @question.answers.where(correct: true).first.id.to_s == @answer_id
     # redirect_to @question, notice: "Question was successfully checked. It was #{result} answer"
   end
 

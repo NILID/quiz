@@ -87,3 +87,24 @@ ul.inline-list li{
   .alert  {color: red;}
   .notice {color: green;}
 }
+
+a.button {
+  background-color: rgba(0, 50, 115, 0.4);
+  box-shadow: 0 5px 0 rgba(0, 50, 115, 0.8);
+  color: white;
+  padding: 1em 1.5em;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  font-weight: 600;
+}
+
+a.button:hover {
+  background-color: rgba(0, 50, 115, 0.6);;
+}
+
+a.button:active {
+  box-shadow: none;
+  top: 5px;
+}

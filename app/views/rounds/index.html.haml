@@ -19,11 +19,9 @@
   %tbody
     - @rounds.each do |round|
       %tr
-        %td= round.theme
-        %td= round.user
+        %td= round.theme.title
+        %td= round.user.email
         %td= round.current_answers
         %td= round.wrong_answers
         %td= round.finished
         %td= link_to 'Show', round
-        %td= link_to 'Edit', edit_round_path(round)
-        %td= link_to 'Destroy', round, method: :delete, data: { confirm: 'Are you sure?' }

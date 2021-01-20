@@ -53,16 +53,16 @@ ActiveRecord::Schema.define(version: 2021_01_20_112501) do
     t.index ["theme_id"], name: "index_questions_on_theme_id"
   end
 
-  create_table "questions_rounds", force: :cascade do |t|
+  create_table "results", force: :cascade do |t|
     t.integer "question_id"
     t.integer "answer_id"
     t.integer "round_id"
     t.boolean "success", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["answer_id"], name: "index_questions_rounds_on_answer_id"
-    t.index ["question_id"], name: "index_questions_rounds_on_question_id"
-    t.index ["round_id"], name: "index_questions_rounds_on_round_id"
+    t.index ["answer_id"], name: "index_results_on_answer_id"
+    t.index ["question_id"], name: "index_results_on_question_id"
+    t.index ["round_id"], name: "index_results_on_round_id"
   end
 
   create_table "rounds", force: :cascade do |t|

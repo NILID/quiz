@@ -1,5 +1,5 @@
 var el = document.getElementById('timer'),
-    total = el.innerHTML,
+    total = 15,
     url = el.dataset.url
     timeinterval = setInterval(function () {
         total = --total;
