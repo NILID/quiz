@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  resources :rounds
   resources :questions do
     member do
-      put :check
+      get :check
     end
   end
   root 'questions#index'

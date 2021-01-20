@@ -7,7 +7,7 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
   %body
     %header.row
       = link_to 'QUIZ', root_url, class: 'header-logo'
@@ -29,4 +29,6 @@
               = content_tag :div, msg, class: type
       = yield
     %footer
+
       .float-right 2021@quiz
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

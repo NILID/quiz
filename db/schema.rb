@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_15_111615) do
+ActiveRecord::Schema.define(version: 2021_01_20_112501) do
 
   create_table "answers", force: :cascade do |t|
     t.string "title", default: "", null: false
@@ -51,6 +51,30 @@ ActiveRecord::Schema.define(version: 2021_01_15_111615) do
     t.integer "theme_id"
     t.index ["author_id"], name: "index_questions_on_author_id"
     t.index ["theme_id"], name: "index_questions_on_theme_id"
+  end
+
+  create_table "questions_rounds", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "answer_id"
+    t.integer "round_id"
+    t.boolean "success", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_questions_rounds_on_answer_id"
+    t.index ["question_id"], name: "index_questions_rounds_on_question_id"
+    t.index ["round_id"], name: "index_questions_rounds_on_round_id"
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.integer "theme_id"
+    t.integer "user_id"
+    t.integer "current_answers", default: 0, null: false
+    t.integer "wrong_answers", default: 0, null: false
+    t.boolean "finished", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["theme_id"], name: "index_rounds_on_theme_id"
+    t.index ["user_id"], name: "index_rounds_on_user_id"
   end
 
   create_table "themes", force: :cascade do |t|

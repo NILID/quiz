@@ -1,0 +1,30 @@
+.row
+  .col
+    %p
+      %b Theme:
+      = @round.theme.title
+    %p
+      %b User:
+      = @round.user.email
+    %p
+      %b Current answers:
+      = @round.current_answers
+    %p
+      %b Wrong answers:
+      = @round.wrong_answers
+    %p
+      %b Finished:
+      = @round.finished
+    %p
+      %b Questions:
+      = @all_questions.count
+
+    = link_to 'Edit', edit_round_path(@round)
+    \|
+    = link_to 'Back', rounds_path
+
+
+  .col
+    = render @questions
+    = raw pagy_nav(@pagy)
+

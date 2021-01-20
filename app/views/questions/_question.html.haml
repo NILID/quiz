@@ -1,0 +1,23 @@
+
+.row
+  .col
+    %h1= question.title
+
+    = question.theme.title
+    #result
+    #timer{data: {url: 'https://google.com'}} 10
+
+  .col.text-right
+    %strong
+    = Question.human_attribute_name(:author)
+    = question.author.email
+
+.row
+  .col
+    .row
+      .col
+        - question.answers[0..1].each do |answer|
+          = link_to answer.title, check_question_path(question, answer_id: answer.id), remote: true
+      .col
+        - question.answers[2..3].each do |answer|
+          = link_to answer.title, check_question_path(question, answer_id: answer.id), remote: true

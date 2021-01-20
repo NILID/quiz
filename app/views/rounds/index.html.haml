@@ -1,0 +1,29 @@
+%h1 Listing rounds
+
+- @themes.each do |theme|
+  = link_to theme.title, new_round_path(theme_id: theme)
+
+
+%table
+  %thead
+    %tr
+      %th Theme
+      %th User
+      %th Current answers
+      %th Wrong answers
+      %th Finished
+      %th
+      %th
+      %th
+
+  %tbody
+    - @rounds.each do |round|
+      %tr
+        %td= round.theme
+        %td= round.user
+        %td= round.current_answers
+        %td= round.wrong_answers
+        %td= round.finished
+        %td= link_to 'Show', round
+        %td= link_to 'Edit', edit_round_path(round)
+        %td= link_to 'Destroy', round, method: :delete, data: { confirm: 'Are you sure?' }
