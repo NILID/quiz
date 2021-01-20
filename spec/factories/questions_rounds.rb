@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :create_questions_round do
+  factory :question_round do
     question { nil }
     round { nil }
     success { false }

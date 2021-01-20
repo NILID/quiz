@@ -1,11 +1,10 @@
-
 .row
   .col
     %h1= question.title
 
     = question.theme.title
     #result
-    #timer{data: {url: 'https://google.com'}} 10
+    #timer{data: {url: round_path(@round, page: @pagy.next) } } 10
 
   .col.text-right
     %strong
