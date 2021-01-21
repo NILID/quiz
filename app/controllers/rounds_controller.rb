@@ -1,23 +1,34 @@
 class RoundsController < ApplicationController
-  before_action :set_round, only: [:show, :destroy]
+  before_action :set_round, only: [:show, :destroy, :result]
+  after_action :verify_authorized
+
 
   def index
+    authorize Round
+
     @rounds = Round.all
     @themes = Theme.order(:title)
   end
 
   def show
+    authorize @round
+
     @all_questions = Question.where(theme_id: @round.theme_id)
     @pagy, @questions = pagy(@all_questions, items: 1)
   end
 
-  def new
-    @round = Round.new
+  def result
+    authorize @round
+
+    @round.update_attribute(:finished, true)
+    @all_questions = Question.where(theme_id: @round.theme_id)
   end
 
-  def create
-    @round = Round.new(round_params)
+  def new
+    @round = Round.new(theme_id: params[:theme_id])
     @round.user = current_user
+
+    authorize @round
 
     respond_to do |format|
       if @round.save

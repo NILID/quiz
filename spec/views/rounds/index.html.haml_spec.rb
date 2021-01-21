@@ -2,22 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "rounds/index", type: :view do
   before(:each) do
-    assign(:rounds, [
-      Round.create!(
-        theme: nil,
-        user: nil,
-        current_answers: 2,
-        wrong_answers: 3,
-        finished: false
-      ),
-      Round.create!(
-        theme: nil,
-        user: nil,
-        current_answers: 2,
-        wrong_answers: 3,
-        finished: false
-      )
-    ])
+    @rounds = create_list(:round, 2)
+    @themes = create_list(:theme, 2)
   end
 
   it "renders a list of rounds" do

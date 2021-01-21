@@ -1,4 +1,4 @@
-- next_url = @pagy.next ? round_path(@round, page: @pagy.next) : root_url
+- next_url = @pagy.next ? round_path(@round, page: @pagy.next) : result_round_path(@round)
 
 .row
   .col
@@ -23,7 +23,7 @@
   - question.answers.shuffle.each do |answer|
     .col-6
       = link_to answer.title,
-        check_question_path(question, answer_id: answer.id),
+        check_question_path(question, answer_id: answer.id, round_id: @round.id),
         remote: true,
         class: 'button',
         id: dom_id(answer)

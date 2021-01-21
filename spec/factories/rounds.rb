@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :round do
-    theme { nil }
-    user { nil }
+    theme
+    user
     current_answers { 1 }
     wrong_answers { 1 }
     finished { false }

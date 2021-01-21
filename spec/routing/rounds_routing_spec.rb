@@ -13,9 +13,5 @@ RSpec.describe RoundsController, type: :routing do
     it "routes to #show" do
       expect(get: "/rounds/1").to route_to("rounds#show", id: "1")
     end
-
-    it "routes to #create" do
-      expect(post: "/rounds").to route_to("rounds#create")
-    end
   end
 end

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :rounds, except: %i[edit update]
+  resources :rounds, except: %i[edit update create] do
+    member do
+      get :result
+    end
+  end
   resources :questions do
     member do
       get :check
