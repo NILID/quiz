@@ -15,11 +15,6 @@
     = question.author.email
 
 .row
-  .col
-    - question.results.each do |result|
-      = result
-
-.row
   - question.answers.shuffle.each do |answer|
     .col-6
       = link_to answer.title,
