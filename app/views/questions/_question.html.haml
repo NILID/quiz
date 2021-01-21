@@ -1,10 +1,13 @@
+- next_url = @pagy.next ? round_path(@round, page: @pagy.next) : root_url
+
 .row
   .col
-    %h1= question.title
+    %h1
+      #{@pagy.page}. #{question.title}
 
     = question.theme.title
 
-    #timer{data: {url: round_path(@round, page: @pagy.next) } } 15
+    #timer{data: {url: next_url } } 15
 
   .col.text-right
     %strong
@@ -26,4 +29,4 @@
         id: dom_id(answer)
 .row
   .col
-    #timer-next{data: {url: round_path(@round, page: @pagy.next) } }
+    #timer-next{data: {url: next_url } }
