@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   after_action :verify_authorized
 
   def index
-    @questions = Question.all
+    @questions = Question.all.includes(:theme, :author)
     authorize @questions
   end
 
@@ -24,11 +24,7 @@ class QuestionsController < ApplicationController
     @answer_id = params[:answer_id]
     @round = Round.find(params[:round_id])
     @result = @question.answers.where(correct: true).first.id.to_s == @answer_id
-    if @result
-      @round.increment!(:current_answers)
-    else
-      @round.increment!(:wrong_answers)
-    end
+    @round.increment!(@result ? :current_answers : :wrong_answers)
 
     @round.results.create!( question_id: @question.id, answer_id: @answer_id, success: @result )
     # redirect_to @question, notice: "Question was successfully checked. It was #{result} answer"
