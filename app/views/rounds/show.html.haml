@@ -17,7 +17,7 @@
       = @round.finished
     %p
       %b Questions:
-      = @all_questions.count
+      = @round.answers_collection
 
     = link_to 'Back', rounds_path
 

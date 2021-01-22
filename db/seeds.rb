@@ -5,6 +5,11 @@ puts '-'*50
 
 author = User.first
 
+unless author
+  puts '!!!!  You need create one user with admin role first of all !!!!'
+  return
+end
+
 themes = [{
      title: 'Политики',
      questions: [

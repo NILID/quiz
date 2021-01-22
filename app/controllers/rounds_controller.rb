@@ -7,13 +7,12 @@ class RoundsController < ApplicationController
     authorize Round
 
     @rounds = Round.all
-    @themes = Theme.order(:title)
   end
 
   def show
     authorize @round
 
-    @all_questions = Question.where(theme_id: @round.theme_id)
+    @all_questions = Question.where(id: @round.answers_collection)
     @pagy, @questions = pagy(@all_questions, items: 1)
   end
 
@@ -21,7 +20,6 @@ class RoundsController < ApplicationController
     authorize @round
 
     @round.update_attribute(:finished, true)
-    @all_questions = Question.where(theme_id: @round.theme_id)
   end
 
   def new

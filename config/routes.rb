@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       get :check
     end
   end
-  root 'questions#index'
+  root 'main#index'
   devise_for :users
   resources :users, only: %i[index edit update] do
   end
