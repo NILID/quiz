@@ -2,10 +2,14 @@
 
 .row
   .col
-    %h1
-      #{@pagy.page}. #{question.title}
-
     = question.theme.title
+
+    %h1
+      Вопрос № #{@pagy.page}.
+    %h1
+      #{question.title}
+
+
 
     #timer{data: {url: next_url } } 15
 
@@ -14,14 +18,14 @@
     = Question.human_attribute_name(:author)
     = question.author.email
 
-.row
-  - question.answers.shuffle.each do |answer|
-    .col-6
+- question.answers.shuffle.each do |answer|
+  .row
+    .col.col-12
       = link_to answer.title,
         check_question_path(question, answer_id: answer.id, round_id: @round.id),
         remote: true,
         class: 'button',
         id: dom_id(answer)
 .row
-  .col
-    #timer-next{data: {url: next_url } }
+  .col.text-center
+    = link_to 'next', next_url, class: 'btn d-none', id: 'next-button'

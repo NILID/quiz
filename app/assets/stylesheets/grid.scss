@@ -38,6 +38,26 @@
 .col-6 {
   max-width: calc(100% / 2);
 }
+.col-7 {
+  max-width: calc(100% / 12 * 7);
+}
+.col-8 {
+  max-width: calc(100% / 12 * 8);
+}
+.col-9 {
+  max-width: calc(100% / 12 * 9);
+}
+.col-10 {
+  max-width: calc(100% / 12 * 10);
+}
+.col-11 {
+  max-width: calc(100% / 12 * 11);
+}
+.col-12 {
+  max-width: 100%
+}
+
+
 
 @media screen and (max-width: 768px) {
   .container {

@@ -24,18 +24,4 @@ for (var i = 0 ; i < highestTimeoutId ; i++) {
     clearTimeout(i); 
 }
 
-// run timer to load next question
-//
-
-var el = document.getElementById('timer-next'),
-    total = 2,
-    url = el.dataset.url
-    timeinterval = setInterval(function () {
-        total = --total;
-        el.textContent = 'Переходим к следующему вопросу ' + total + ' сек.';
-        if (total <= 0) {
-            clearInterval(timeinterval);
-            window.location = url;
-        }
-    }, 1000);
-
+next_button.classList.remove('d-none');

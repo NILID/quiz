@@ -19,7 +19,8 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 15px;
   line-height: 19px;
-  width: 100%;
+  width: 980px;
+  margin: 0 auto;
   padding: 0 20px;
 }
 
@@ -83,6 +84,10 @@ ul.inline-list li{
   text-align: right;
 }
 
+.text-center {
+  text-align: center;
+}
+
 #flash {
   .alert  {color: red;}
   .notice {color: green;}
@@ -100,6 +105,17 @@ a.button {
   font-weight: 600;
 }
 
+a.btn {
+  background-color: rgba(0, 50, 115, 0.4);
+  color: white;
+  padding: 1em 1.5em;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+
+}
+
 a.button:hover {
   background-color: rgba(0, 50, 115, 0.6);;
 }
@@ -107,4 +123,8 @@ a.button:hover {
 a.button:active {
   box-shadow: none;
   top: 5px;
+}
+
+.d-none {
+  display: none;
 }
