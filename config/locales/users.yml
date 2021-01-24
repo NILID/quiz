@@ -1,0 +1,7 @@
+ru:
+  users:
+    edit_title: Редактирование участника
+    roles:
+      admin: Администратор
+      moderator: Модератор
+      user: Пользователь

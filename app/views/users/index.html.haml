@@ -4,7 +4,7 @@
       %thead
         %tr
           %th ID
-          %th User email
+          %th= User.human_attribute_name(:email)
           %th
       %tbody
         - @users.each do |user|

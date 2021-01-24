@@ -1,6 +1,8 @@
 .row
   .col
+    %h1= t('users.edit_title')
     = form_for @user do |f|
-      = f.label :role
-      = f.select :role, User.roles.keys.map {|role| [role.titleize,role]}
-      = f.submit
+      .field
+        = f.label :role
+        = f.select :role, User.roles.keys.map {|role| [t("users.roles.#{role}"), role] }
+      = f.submit t('actions.save')

@@ -4,6 +4,7 @@ ru:
       answer: ответ
       question: вопрос
       theme: тема
+      user: участник
     attributes:
       answer:
         title: Текст ответа
