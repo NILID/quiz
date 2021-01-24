@@ -1,14 +1,8 @@
 %h1= formtitle
 
 = form_with(model: question, local: true) do |form|
-  - if question.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(question.errors.count, "error")
-        prohibited this question from being saved:
-      %ul
-        - question.errors.full_messages.each do |message|
-          %li= message
+  = render 'application/error', object: question
+
   .field
     = form.label :title
     = form.text_area :title

@@ -2,7 +2,6 @@ class RoundsController < ApplicationController
   before_action :set_round, only: [:show, :destroy, :result]
   after_action :verify_authorized
 
-
   def index
     authorize Round
 

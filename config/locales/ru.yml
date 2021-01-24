@@ -11,6 +11,7 @@ ru:
     sign_up: Регистрация
     sure: Вы уверены?
     to_sign_up: Зарегистрироваться
+    errors_done: '%{error} при заполнении формы:'
   titles:
     audit: Аудит
     questions: Вопросы
