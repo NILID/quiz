@@ -8,17 +8,7 @@
     = Question.human_attribute_name(:author)
     = @question.author.email
 
-.row
-  .col
-    = form_for @question, url: check_question_path(@question), method: :put do |f|
-      .row
-        .col
-          - @question.answers[0..1].each do |answer|
-            = f.radio_button :answers, answer.id
-            = f.label :answers, answer.title, value: answer.id
-        .col
-          - @question.answers[2..3].each do |answer|
-            = f.radio_button :answers, answer.id
-            = f.label :answers, answer.title, value: answer.id
-
-      = f.submit t('actions.answer')
+- @question.answers.each do |answer|
+  .row
+    .col.col-12
+      = link_to answer.title, '#', class: 'button'

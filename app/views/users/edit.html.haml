@@ -5,4 +5,7 @@
       .field
         = f.label :role
         = f.select :role, User.roles.keys.map {|role| [t("users.roles.#{role}"), role] }
-      = f.submit t('actions.save')
+      .actions
+        = f.submit t('actions.save'), class: 'btn'
+        .float-right
+          = link_to t('actions.back'), users_path, class: 'btn btn-outline'
