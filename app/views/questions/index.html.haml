@@ -6,7 +6,7 @@
 .row
   .col
     - if @questions.any?
-      %table
+      %table.table
         %thead
           %tr
             %th= Question.human_attribute_name(:title)

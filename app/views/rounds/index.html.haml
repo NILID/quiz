@@ -1,6 +1,6 @@
 %h1 Listing rounds
 
-%table
+%table.table
   %thead
     %tr
       %th Theme
@@ -9,9 +9,6 @@
       %th Wrong answers
       %th Finished
       %th
-      %th
-      %th
-
   %tbody
     - @rounds.each do |round|
       %tr
@@ -20,4 +17,4 @@
         %td= round.current_answers
         %td= round.wrong_answers
         %td= round.finished
-        %td= link_to 'Show', round
+        %td= link_to 'Show', result_round_path(round)

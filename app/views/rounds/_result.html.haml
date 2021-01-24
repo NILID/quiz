@@ -1,11 +1,22 @@
 %h2 RESULTS
+= @round.user.email
 
-%table
-  - round.results.each do |result|
+
+%table.table
+  %thead
     %tr
-      %td
-        %i= result.question.title
-      %td
-        %b= result.answer.title
-      %td
-        %b= result.success
+      %th #
+      %th= Question.human_attribute_name(:title)
+      %th= Answer.model_name.human.capitalize
+      %th= Question.human_attribute_name(:author)
+  %tbody
+    - round.results.each.with_index(1) do |result, index|
+      %tr
+        %td
+          = index
+        %td
+          = result.question.title
+        %td
+          = result.answer.title
+        %td
+          = result.success
