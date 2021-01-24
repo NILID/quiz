@@ -1,8 +1,12 @@
 // mark background for current button
 //
 var button = document.getElementById('answer_' + <%= @answer_id %>);
+var current_button = document.getElementById('answer_' + <%= @question.current_answer_id %>);
 if (<%= @result %> == false) {
+  var current_button = document.getElementById('answer_' + <%= @question.current_answer_id %>);
+
   button.style.backgroundColor = "red";
+  current_button.style.backgroundColor = "green";
 } else {
   button.style.backgroundColor = "green";
 }

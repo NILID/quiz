@@ -15,4 +15,9 @@ class Question < ApplicationRecord
   validates :answers, length: { is: 4, message: 'must be four' }
 
   accepts_nested_attributes_for :answers, reject_if: :all_blank
+
+  def current_answer_id
+    answers.where(correct: true).first.id
+  end
+
 end
