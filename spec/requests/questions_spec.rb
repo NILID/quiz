@@ -8,6 +8,18 @@ RSpec.describe 'Questions', type: :request do
     describe "#{role} should" do
       login_user(role)
 
+      it 'returns index' do
+        get questions_path
+        expect(response).to be_successful
+        expect(response).to render_template(:index)
+      end
+
+      it 'returns show' do
+        get question_path(question)
+        expect(response).to be_successful
+        expect(response).to render_template(:show)
+      end
+
       it 'returns edit' do
         get edit_question_path(question)
         expect(response).to render_template(:edit)
@@ -41,18 +53,6 @@ RSpec.describe 'Questions', type: :request do
     describe "#{role} should" do
       login_user(role)
 
-      it 'returns index' do
-        get questions_path
-        expect(response).to be_successful
-        expect(response).to render_template(:index)
-      end
-
-      it 'returns show' do
-        get question_path(question)
-        expect(response).to be_successful
-        expect(response).to render_template(:show)
-      end
-
       it 'returns check' do
         theme = create(:theme)
         questions = create_list(:question, 5, theme: theme)
@@ -66,61 +66,64 @@ RSpec.describe 'Questions', type: :request do
   describe 'user should' do
     login_user(:user)
 
+    after(:each) do
+      expect(response).to redirect_to(root_path)
+    end
+
+    it 'returns index' do
+      get questions_path
+    end
+
+    it 'returns show' do
+      get question_path(question)
+    end
+
+
     it 'not returns edit' do
       get edit_question_path(question)
-      expect(response).to redirect_to(root_path)
     end
 
     it 'not destroys' do
       delete question_path(question)
       expect{ response }.to change(Question, :count).by(0)
-      expect( response ).to redirect_to(root_path)
     end
 
     it 'not updates' do
       put question_path(question, question: { title: 'New title' })
-      expect( response ).to redirect_to(root_path)
     end
 
     it 'not returns new' do
       get new_question_path
-      expect( response ).to redirect_to(root_path)
     end
   end
 
-  describe 'unreg user should' do
+  describe 'unreg user should not' do
+    after(:each) do
+      expect(response).to redirect_to(new_user_session_path)
+    end
+
     it 'returns index' do
       get questions_path
-      expect(response).to be_successful
-      expect(response).to render_template(:index)
     end
 
     it 'returns show' do
       get question_path(question)
-      expect(response).to be_successful
-      expect(response).to render_template(:show)
     end
 
-    describe 'not' do
-      after(:each) do
-        expect(response).to redirect_to(new_user_session_path)
-      end
+    it 'returns edit' do
+      get edit_question_path(question)
+    end
 
-      it 'returns edit' do
-        get edit_question_path(question)
-      end
+    it 'destroys' do
+      expect{ delete question_path(question) }.to change(Question, :count).by(0)
+    end
 
-      it 'destroys' do
-        expect{ delete question_path(question) }.to change(Question, :count).by(0)
-      end
+    it 'updates' do
+      put question_path(question, question: { title: 'New title' })
+    end
 
-      it 'updates' do
-        put question_path(question, question: { title: 'New title' })
-      end
-
-      it 'returns new' do
-        get new_question_path
-      end
+    it 'returns new' do
+      get new_question_path
     end
   end
 end

@@ -13,8 +13,9 @@
     %header.row
       = link_to 'QUIZ', root_url, class: 'header-logo'
       %ul.inline-list.header-menu
-        %li{class: params[:controller] == 'questions' ? 'active' : nil}
-          = link_to t('titles.questions'), questions_path
+        - if policy(Question).index?
+          %li{class: params[:controller] == 'questions' ? 'active' : nil}
+            = link_to t('titles.questions'), questions_path
         - if policy(User).index?
           %li{class: (%w[devise/sessions users].include? params[:controller]) ? 'active' : nil }
             = link_to t('titles.users'), users_path

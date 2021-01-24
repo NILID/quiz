@@ -1,14 +1,14 @@
 class QuestionPolicy < ApplicationPolicy
   def index?
-    true
+    @user && (@user.admin? || @user.moderator?)
   end
 
   def show?
-    true
+    @user && (@user.admin? || @user.moderator?)
   end
 
   def check?
-    true
+    @user
   end
 
   def new?
