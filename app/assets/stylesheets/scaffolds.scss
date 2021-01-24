@@ -25,6 +25,16 @@ textarea {
   margin: 5px 0;
 }
 
+textarea {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+textarea:focus {
+  border: 1px solid #4b92e7;
+}
+
 .form-helptext {
   text-align: right;
   color: #999;
@@ -32,7 +42,7 @@ textarea {
 }
 
 .right-checkbox {
- margin: 5px 15px;
+  margin: 5px 15px;
 }
 
 #error_explanation {

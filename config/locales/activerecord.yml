@@ -5,6 +5,10 @@ ru:
       question: вопрос
       theme: тема
     attributes:
+      answer:
+        title: Текст ответа
+      answers:
+        title: Текст ответа
       question:
         author: Автор
         theme_id: Тема

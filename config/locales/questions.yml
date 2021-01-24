@@ -2,3 +2,5 @@ ru:
   questions:
     add: Добавить вопрос
     answer: Ответ №%{index}
+    new_title: Новый вопрос
+    edit_title: Редактирование вопроса

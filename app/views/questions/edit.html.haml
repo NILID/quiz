@@ -1,7 +1,6 @@
 .row
   .col
-    %h1 Editing Question
-    = render 'questions/form', question: @question
+    = render 'questions/form', question: @question, formtitle: t('questions.edit_title')
     = link_to 'Show', @question
     |
     = link_to 'Back', questions_path
