@@ -18,7 +18,10 @@
   = form.fields_for :answers do |a|
     .field
       = a.label :title, t('questions.answer', index: a.options[:child_index] + 1)
-      = a.text_field :title
-      = a.check_box :correct
+      .row
+        .col-11
+          = a.text_field :title
+        .col-1
+          = a.check_box :correct, class: 'right-checkbox'
   .actions
-    = form.submit
+    = form.submit class: 'btn'

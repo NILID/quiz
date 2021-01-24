@@ -122,7 +122,9 @@ a.button:active {
 }
 
 h1 {
-  color: #666;
-  padding-bottom: 20px;
+  color: rgba(0, 50, 115, 0.4);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
   font-size: 30px;
+  border-bottom: 1px solid rgba(0, 50, 115, 0.4);
 }
