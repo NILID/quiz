@@ -1,5 +1,5 @@
-// disable href for all links
-//
+var questions = document.getElementById('questions')
+questions.innerHTML = "<%=j render @questions %>";
 
 var el = document.getElementById('timer'),
     next_button = document.getElementById('next-button'),

@@ -15,7 +15,6 @@ for (var i = 0, len = buttons.length; i < len; i++) {
     button.href="javascript:;";
 }
 
-
 // Set a fake timeout to get the highest timeout id
 // need to disable timer
 //
@@ -24,4 +23,7 @@ for (var i = 0 ; i < highestTimeoutId ; i++) {
     clearTimeout(i); 
 }
 
+// show next button
+//
+var next_button = document.getElementById('next-button');
 next_button.classList.remove('d-none');

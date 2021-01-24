@@ -6,7 +6,8 @@
     = render 'application/favicon'
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
 
   %body
     %header.row
@@ -31,4 +32,3 @@
     %footer
 
       .float-right 2021@quiz
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

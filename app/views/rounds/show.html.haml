@@ -22,4 +22,5 @@
     = link_to 'Back', rounds_path
 
   .col
-    = render @questions
+    #questions
+      = link_to 'start', round_path(@round, page: 1), class: 'btn', remote: true

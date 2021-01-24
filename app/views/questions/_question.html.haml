@@ -9,8 +9,6 @@
     %h1
       #{question.title}
 
-
-
     #timer{data: {url: next_url } } 15
 
   .col.text-right
@@ -28,4 +26,4 @@
         id: dom_id(answer)
 .row
   .col.text-center
-    = link_to 'next', next_url, class: 'btn d-none', id: 'next-button'
+    = link_to 'next', next_url, class: 'btn d-none', id: 'next-button', remote: true

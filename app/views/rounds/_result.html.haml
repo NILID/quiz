@@ -1,0 +1,11 @@
+%h2 RESULTS
+
+%table
+  - round.results.each do |result|
+    %tr
+      %td
+        %i= result.question.title
+      %td
+        %b= result.answer.title
+      %td
+        %b= result.success
