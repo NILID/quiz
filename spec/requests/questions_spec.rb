@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Questions', type: :request do
   let!(:question) { create(:question) }
+  let!(:round) { create(:round) }
 
   %i[admin moderator].each do |role|
     describe "#{role} should" do
@@ -53,8 +54,11 @@ RSpec.describe 'Questions', type: :request do
       end
 
       it 'returns check' do
-        put check_question_path(question, question: { answers: [1] })
-        expect(response).to redirect_to(question)
+        theme = create(:theme)
+        questions = create_list(:question, 5, theme: theme)
+        round = create(:round, theme: theme)
+        get check_question_path(questions.first, answers_id: questions.first.current_answer_id, round_id: round.id), xhr: true
+        expect(response).to be_successful
       end
     end
   end

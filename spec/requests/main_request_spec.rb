@@ -29,7 +29,7 @@ RSpec.describe "Mains", type: :request do
   describe 'unreg user should' do
     it "returns main index" do
       get "/"
-      expect(response).to have_http_status(:success)
+      expect(response).to redirect_to(new_user_session_path)
     end
 
     it 'not returns audit' do
