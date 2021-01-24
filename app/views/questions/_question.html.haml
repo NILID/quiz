@@ -1,12 +1,12 @@
 - next_url = @pagy.next ? round_path(@round, page: @pagy.next) : result_round_path(@round)
 
 .row
-  .col
+  .col.col-12
     = question.theme.title
 
     %h1
       Вопрос № #{@pagy.page}.
-    %h1
+    %h1.text-center
       #{question.title}
 
     #timer{data: {url: next_url } } 15
