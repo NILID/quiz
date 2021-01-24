@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   after_initialize :set_default_role, :if => :new_record?
 
+  validates :email, uniqueness: true
+
   def set_default_role
     self.role ||= :user
   end
