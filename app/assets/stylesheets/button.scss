@@ -1,8 +1,8 @@
+@import 'mixins';
+
 .btn {
-    box-shadow: 0px 10px 14px -7px #276873;
     background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
     background-color:#599bb3;
-    border-radius:5px;
     display:inline-block;
     cursor:pointer;
     color:#ffffff;
@@ -12,24 +12,31 @@
     padding:13px 22px;
     text-decoration:none;
     text-shadow:0px 1px 0px #3d768a;
-}
-.btn:hover {
+
+    @include border-radius(5px);
+    @include box-shadow(0px 10px 14px -7px #276873);
+
+  &:hover {
     background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
     background-color:#408c99;
-}
-.btn:active {
+  }
+
+  &:active {
     position:relative;
     top:1px;
-}
+  }
 
-.btn-outline {
-    box-shadow: 0px 5px 15px -7px #8a8a8a;
+  &.btn-outline {
     background:linear-gradient(to bottom, #ffffff 5%, #e6e6e6 100%);
     background-color:#ffffff;
     border:1px solid #a8a6a8;
     color:#39919e;
-}
-.btn-outline:hover {
+
+    @include box-shadow(0px 5px 15px -7px #8a8a8a);
+  }
+
+  &.btn-outline:hover {
     background:linear-gradient(to bottom, #e6e6e6 5%, #ffffff 100%);
     background-color:#e6e6e6;
+  }
 }
