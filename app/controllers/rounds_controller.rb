@@ -11,7 +11,7 @@ class RoundsController < ApplicationController
   def show
     authorize @round
 
-    @all_questions = Question.where(id: @round.answers_collection)
+    @all_questions = Question.where(id: @round.questions_collection)
     @pagy, @questions = pagy(@all_questions, items: 1)
   end
 
