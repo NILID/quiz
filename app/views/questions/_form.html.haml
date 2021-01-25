@@ -12,6 +12,7 @@
       .field
         = form.label :theme_id
         = form.select :theme_id, Theme.order(:title).map{ |theme| [theme.title, theme.id] }, { include_blank: t('actions.select') }
+        = link_to 'add new theme', '#add_theme', id: 'add-theme'
 
       = form.fields_for :answers do |a|
         .field
@@ -25,3 +26,18 @@
         = form.submit class: 'btn'
         .float-right
           = link_to t('actions.back'), questions_path, class: 'btn btn-outline'
+
+    #theme_modal.modal.d-none
+      .modal_dialog
+        %header.modal_header
+          %h1= t('themes.new_title')
+        .modal_content
+          #theme_errors
+          = form_with(model: Theme.new, id: 'new_theme_form') do |f|
+            = f.label :title
+            = f.text_field :title
+            .modal-actions
+              = f.submit t('actions.add'), class: 'btn'
+              .float-right
+                .btn.btn-outline#modal_close
+                  = t('actions.close')

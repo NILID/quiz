@@ -14,6 +14,8 @@ ru:
         author: Автор
         theme_id: Тема
         title: Текст вопроса
+      theme:
+        title: Название
       user:
         password: Пароль
         password_confirmation: Повторите пароль

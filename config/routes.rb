@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :themes, only: %i[new create]
+
   resources :rounds, except: %i[edit update create] do
     member do
       get :result
@@ -11,7 +13,8 @@ Rails.application.routes.draw do
   end
   root 'main#index'
   devise_for :users
-  resources :users, only: %i[index edit update] do
-  end
+
+  resources :users, only: %i[index edit update]
+
   get :audit, to: 'main#audit'
 end
