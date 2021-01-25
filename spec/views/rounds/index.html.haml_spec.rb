@@ -9,7 +9,7 @@ RSpec.describe "rounds/index", type: :view do
     render
     @rounds.each do |round|
       assert_select "tr>td", text: round.theme.title.to_s, count: 1
-      assert_select "tr>td", text: round.user.email.to_s, count: 1
+      assert_select "tr>td", text: round.user.login.to_s, count: 1
     end
     # two finished equal false
     assert_select "tr>td", text: false.to_s, count: 2
