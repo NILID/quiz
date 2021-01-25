@@ -107,15 +107,17 @@ a.button {
 
   @include box-shadow(0 5px 0 rgba(0, 50, 115, 0.8));
   @include border-radius(5px);
-}
 
-a.button:hover {
-  background-color: rgba(0, 50, 115, 0.6);;
-}
+  &.button:hover {
+    background-color: rgba(0, 50, 115, 0.6);;
+  }
 
-a.button:active {
-  @include box-shadow(none);
-  top: 5px;
+  a.button:active {
+    @include box-shadow(none);
+    top: 5px;
+  }
+
+  &.btn-by { margin-bottom: 20px; }
 }
 
 .d-none {
@@ -123,9 +125,26 @@ a.button:active {
 }
 
 h1 {
-  color: rgba(0, 50, 115, 0.4);
+  color: rgba(0, 50, 115, 0.6);
   padding-bottom: 15px;
   margin-bottom: 20px;
   font-size: 30px;
-  border-bottom: 1px solid rgba(0, 50, 115, 0.4);
+  border-bottom: 1px solid rgba(0, 50, 115, 0.6);
+}
+
+.timer {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid rgba(0, 50, 115, 0.6);
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  background: rgba(0, 50, 115, 0.4);
+  margin: 5px auto 15px;
+
+  @include box-shadow(0 5px 10px rgba(0, 50, 115, 0.2));
+  @include border-radius(50%);
+
 }

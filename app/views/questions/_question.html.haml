@@ -1,29 +1,25 @@
 - next_url = @pagy.next ? round_path(@round, page: @pagy.next) : result_round_path(@round)
 
 .row
-  .col.col-12
-    = question.theme.title
+  .col.col-12.text-muted.text-right
+    = [Question.human_attribute_name(:author).downcase, question.author.login].join(': ')
 
-    %h1
-      Вопрос № #{@pagy.page}.
-    %h1.text-center
+  .col.col-12
+    %h2.text-center.question-title
+      %span.text-muted Вопрос № #{@pagy.page}.
       #{question.title}
 
-    #timer{data: {url: next_url } } 15
+  .col.col-12
+    #timer.timer{data: {url: next_url } } 15
 
-  .col.text-right
-    %strong
-    = Question.human_attribute_name(:author)
-    = question.author.login
-
-- question.answers.shuffle.each do |answer|
-  .row
+.row
+  - question.answers.shuffle.each do |answer|
     .col.col-12
       = link_to answer.title,
         check_question_path(question, answer_id: answer.id, round_id: @round.id),
         remote: true,
-        class: 'button',
+        class: 'button btn-by',
         id: dom_id(answer)
 .row
-  .col.text-center
-    = link_to 'next', next_url, class: 'btn d-none', id: 'next-button', remote: true
+  .col.col-12.text-center
+    = link_to t('actions.next'), next_url, class: 'btn d-none', id: 'next-button', remote: true

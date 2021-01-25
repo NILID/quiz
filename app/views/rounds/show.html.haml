@@ -1,11 +1,5 @@
 .row
-  .col.col-6
-    %p
-      %b Theme:
-      = @round.theme.title
-    %p
-      %b User:
-      = @round.user.login
+  .col.col-12
     %p
       %b Current answers:
       = @round.current_answers
@@ -21,6 +15,7 @@
 
     = link_to 'Back', rounds_path
 
-  .col.col-6
+  .col.col-12
+    %h1.text-center Викторина на тему #{@round.theme.title}
     #questions
-      = link_to t('actions.start'), round_path(@round, page: 1), class: 'btn', remote: true
+      .text-center= link_to t('actions.start'), round_path(@round, page: 1), class: 'btn', remote: true

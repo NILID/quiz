@@ -1,5 +1,9 @@
 @import 'mixins';
 
+.text-muted {
+  color: #666;
+}
+
 div {
   &.field, &.actions {
     margin-bottom: 10px;
