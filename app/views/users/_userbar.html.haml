@@ -1,8 +1,7 @@
 .userbar
   - if current_user
-    = current_user.login
-    (#{t("users.roles.#{current_user.role}")})
-    \#{link_to t('actions.logout'), destroy_user_session_path, method: :delete}
+    = link_to current_user.login, current_user
+    = link_to t('actions.logout'), destroy_user_session_path, method: :delete
   - else
     = link_to t('actions.sign_in'), new_user_session_path
     \ /

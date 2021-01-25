@@ -9,6 +9,10 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    true
+  end
+
   def edit?
     @user && @user.admin?
   end
@@ -17,4 +21,7 @@ class UserPolicy < ApplicationPolicy
     @user && @user.admin?
   end
 
+  def get_more_info?
+    @user && @user.admin?
+  end
 end

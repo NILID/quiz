@@ -1,8 +1,12 @@
 .row
   .col.col-12
-    %ul.tags
-      - @themes.each do |theme|
-        %li
-          = link_to new_round_path(theme_id: theme) do
-            = theme.title
-            %span= theme.questions_count
+    - if @themes.any?
+      %ul.tags
+        - @themes.each do |theme|
+          %li
+            = link_to new_round_path(theme_id: theme) do
+              = theme.title
+              %span= theme.questions_count
+    - else
+      .empty-block
+        = t('titles.empty')

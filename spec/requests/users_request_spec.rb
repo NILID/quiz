@@ -6,12 +6,6 @@ RSpec.describe 'Users', type: :request do
   describe 'moderator should' do
     login_user(:admin)
 
-    it 'returns index' do
-      get users_path
-      expect(response).to be_successful
-      expect(response).to render_template(:index)
-    end
-
     it 'edit user' do
       get edit_user_path(user)
       expect(response).to have_http_status(:success)
@@ -23,14 +17,27 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe 'moderator should' do
-    login_user(:moderator)
+  %i[admin moderator user].each do |role|
+    describe "#{role} should" do
+      login_user(role)
 
-    it 'returns index' do
-      get users_path
-      expect(response).to be_successful
-      expect(response).to render_template(:index)
+      it 'returns index' do
+        get users_path
+        expect(response).to be_successful
+        expect(response).to render_template(:index)
+      end
+
+      it 'returns show' do
+        get user_path(user)
+        expect(response).to be_successful
+        expect(response).to render_template(:show)
+      end
     end
+  end
+
+
+  describe 'moderator should not' do
+    login_user(:moderator)
 
     it 'edit user' do
       get edit_user_path(user)
@@ -46,6 +53,14 @@ RSpec.describe 'Users', type: :request do
   describe 'unreg user should' do
     it 'returns index' do
       get users_path
+      expect(response).to be_successful
+      expect(response).to render_template(:index)
+    end
+
+    it 'returns show' do
+      get user_path(user)
+      expect(response).to be_successful
+      expect(response).to render_template(:show)
     end
 
     describe 'not' do

@@ -1,0 +1,6 @@
+.row
+  .col.col-12
+    - if policy(@user).get_more_info?
+      .float-right.text-muted
+        = t("users.roles.#{@user.role}")
+    %h1= @user.login

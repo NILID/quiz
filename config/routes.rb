@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   root 'main#index'
   devise_for :users
 
-  resources :users, only: %i[index edit update]
+  resources :users, only: %i[index edit update show]
 
   get :audit, to: 'main#audit'
 end

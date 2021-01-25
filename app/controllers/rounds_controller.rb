@@ -41,12 +41,10 @@ class RoundsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_round
       @round = Round.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def round_params
       params.require(:round).permit(:theme_id, :user_id, :current_answers, :wrong_answers, :finished)
     end

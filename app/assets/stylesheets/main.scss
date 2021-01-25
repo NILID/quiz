@@ -91,6 +91,7 @@ ul.inline-list li{
 }
 
 #flash {
+  padding-bottom: 20px;
   .alert  {color: #d56464;}
   .notice {color: green;}
 }
@@ -146,5 +147,11 @@ h1 {
 
   @include box-shadow(0 5px 10px rgba(0, 50, 115, 0.2));
   @include border-radius(50%);
+}
 
+.empty-block {
+  padding: 20px 0;
+  text-align: center;
+  font-size: 1.3em;
+  color: #999;
 }
