@@ -1,6 +1,6 @@
 class RoundPolicy < ApplicationPolicy
   def index?
-    true
+    @user && (@user.admin? || @user.moderator?)
   end
 
   def show?

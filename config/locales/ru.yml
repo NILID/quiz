@@ -13,6 +13,7 @@ ru:
     sure: Вы уверены?
     to_sign_up: Зарегистрироваться
     errors_done: '%{error} при заполнении формы:'
+    start: Начать
   titles:
     audit: Аудит
     questions: Вопросы
