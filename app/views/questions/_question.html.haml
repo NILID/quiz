@@ -1,6 +1,14 @@
 - next_url = @pagy.next ? round_path(@round, page: @pagy.next) : result_round_path(@round)
 
 .row
+  .col.col-12
+    .progress
+      = @round.results.pluck(:success).each do |result|
+        - if result == false
+          .progress-bar-failed(style="width:10%")><
+        - else
+          .progress-bar-success(style="width:10%")><
+
   .col.col-12.text-muted.text-right
     = [Question.human_attribute_name(:author).downcase, question.author.login].join(': ')
 
