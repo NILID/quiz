@@ -1,5 +1,5 @@
 # QUIZ
-[![Build Status](https://travis-ci.org/github/NILID/quiz.png)](https://travis-ci.org/github/NILID/quiz)
+[![Build Status](https://travis-ci.org/NILID/quiz.svg?branch=main)](https://travis-ci.org/NILID/quiz)
 
 This is a Ruby on Rails based quiz application.
 
