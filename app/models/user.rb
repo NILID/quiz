@@ -5,7 +5,14 @@ class User < ApplicationRecord
 
   after_initialize :set_default_role, :if => :new_record?
 
-  validates :email, uniqueness: true
+  validates :email,
+            :login, uniqueness: true
+  validates :login, presence:   true,
+                    uniqueness: true,
+                    exclusion:  { in: LOGIN_BLACKLIST },
+                    length:     { in: 3..12 },
+                    format:     { with: /\A[A-Za-z0-9_]+\z/ }
+
 
   def set_default_role
     self.role ||= :user

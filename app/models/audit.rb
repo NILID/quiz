@@ -6,7 +6,7 @@ class Audit < Audited::Audit
       when 'Question' then auditable&.title
       when 'User'     then auditable&.email
       end
-    [created_at, user&.email, action, auditable_type, 'with id =', auditable_id, name].join(' ')
+    [created_at, user&.login, action, auditable_type, 'with id =', auditable_id, name].join(' ')
   end
 
 end

@@ -14,7 +14,7 @@
   .col.text-right
     %strong
     = Question.human_attribute_name(:author)
-    = question.author.email
+    = question.author.login
 
 - question.answers.shuffle.each do |answer|
   .row

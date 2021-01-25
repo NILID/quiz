@@ -13,7 +13,7 @@
     - @rounds.each do |round|
       %tr
         %td= round.theme.title
-        %td= round.user.email
+        %td= round.user.login
         %td= round.current_answers
         %td= round.wrong_answers
         %td= round.finished

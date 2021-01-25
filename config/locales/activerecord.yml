@@ -17,6 +17,7 @@ ru:
       theme:
         title: Название
       user:
+        login: Логин
         password: Пароль
         password_confirmation: Повторите пароль
         role: Роль

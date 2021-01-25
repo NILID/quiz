@@ -4,7 +4,7 @@
       = link_to t('questions.add'), new_question_path
 
 .row
-  .col
+  .col.col-12
     - if @questions.any?
       %table.table
         %thead
@@ -18,7 +18,7 @@
             %tr
               %td= link_to question.title, question
               %td= question.theme.title
-              %td= question.author.email
+              %td= question.author.login
               - if policy(question).edit?
                 %td= link_to t('actions.edit'), edit_question_path(question)
                 %td= link_to t('actions.del'), question, method: :delete, data: { confirm: t('actions.sure') }

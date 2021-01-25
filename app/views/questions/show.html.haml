@@ -1,12 +1,12 @@
 .row
-  .col
+  .col.col-12
     %h1= @question.title
 
     = @question.theme.title
-  .col.text-right
+  .col.col-12.text-right
     %strong
     = Question.human_attribute_name(:author)
-    = @question.author.email
+    = @question.author.login
 
 - @question.answers.each do |answer|
   .row
