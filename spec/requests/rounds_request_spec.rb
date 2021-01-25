@@ -1,6 +1,6 @@
  require 'rails_helper'
 
-RSpec.describe "/rounds", type: :request do
+RSpec.describe 'Rounds', type: :request do
   let!(:round) { create(:round) }
 
   %i[admin moderator].each do |role|

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Mains", type: :request do
+RSpec.describe 'Main', type: :request do
 
   %i[admin].each do |role|
     describe "#{role} should" do

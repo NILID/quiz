@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Questions', type: :request do
   let!(:question) { create(:question) }
-  let!(:round) { create(:round) }
+  let!(:round)    { create(:round) }
 
   %i[admin moderator].each do |role|
     describe "#{role} should" do
