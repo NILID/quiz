@@ -6,7 +6,7 @@ module ApplicationHelper
      val = "plural.#{value}"
      result = Russian::p(count, t("#{val}_1"), t("#{val}_2"), t("#{val}_10"))
      if with_count
-       count.to_s + ' ' + result
+       [count.to_s, result].join(' ')
      else
        result
      end
