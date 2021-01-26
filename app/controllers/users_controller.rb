@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     authorize @user
 
     if @user.update(user_params)
-      redirect_to users_url, notice: 'User was updated'
+      redirect_to users_url, notice: t('flash.was_created', item: User.model_name.human)
     else
       render action: 'edit'
     end
