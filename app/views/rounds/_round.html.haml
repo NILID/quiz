@@ -1,8 +1,8 @@
 %tr
   %td= link_to rus_datetime(round.created_at), result_round_path(round)
   %td= round.theme.title
-  %td
-    = round.current_answers
+  %td.text-center
+    %span.text-success= round.current_answers
     \ /
-    = round.wrong_answers
+    %span.text-error= round.wrong_answers
   %td= round.finished

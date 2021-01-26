@@ -1,8 +1,8 @@
 @import 'mixins';
 
-.text-muted {
-  color: #666;
-}
+.text-muted {color: #666;}
+.text-success {color: #82b74b}
+.text-error {color: #c94c4c}
 
 div {
   &.field, &.actions {
