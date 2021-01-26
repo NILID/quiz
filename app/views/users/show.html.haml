@@ -18,4 +18,4 @@
           = render @rounds
     - else
       .empty-block
-        = t('results.empty')
+        = current_user ? t('results.empty_for_user') : t('results.empty')
