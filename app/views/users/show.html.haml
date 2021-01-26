@@ -1,3 +1,5 @@
+- answers_stat = @user.answers_stat
+
 .row
   .col.col-12
     - if policy(@user).get_more_info?
@@ -5,8 +7,23 @@
         = t("users.roles.#{@user.role}")
     %h1= @user.login
 
-  .col.col-12
-    - if @rounds.any?
+  - if @rounds.any?
+    .col.col-12
+      %p.py-1
+        = t('results.total')
+        %strong.text-success= answers_stat[:correct]
+        \ /
+        %strong.text-error=   answers_stat[:wrong]
+      - if answers_stat[:total]
+        %p.py-1
+          = t('results.in_percent')
+          #{answers_stat[:total]}%
+      - if @user.favorite_theme
+        %p.py-1
+          = t('users.favorite_theme')
+          = @user.favorite_theme
+
+    .col.col-12
       %table.table
         %thead
           %tr
@@ -16,6 +33,7 @@
             %th= Round.human_attribute_name(:finished)
         %tbody
           = render @rounds
-    - else
+  - else
+    .col.col-12
       .empty-block
         = current_user ? t('results.empty_for_user') : t('results.empty')

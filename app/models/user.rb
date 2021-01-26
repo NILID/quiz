@@ -23,6 +23,19 @@ class User < ApplicationRecord
     self.role ||= :user
   end
 
+  def answers_stat
+    correct = self.rounds.sum(:current_answers)
+    wrong   = self.rounds.sum(:wrong_answers)
+    total   = correct/wrong.to_f * 100
+    {correct: correct, wrong: wrong, total: total.round(2)}
+  end
+
+  def favorite_theme
+    # get count of themes ids
+    themes_ids = self.rounds.pluck(:theme_id).each_with_object(Hash.new(0)){|string, hash| hash[string] += 1}
+    Theme.find(themes_ids.first).first.title if themes_ids.any?
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # :recoverable, :rememberable, :validatable

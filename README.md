@@ -8,3 +8,8 @@ There is a demo  [running on Heroku](https://quizavr.herokuapp.com/). Please fee
 # TODO
 
 * Ability to create user with admin role
+* Save stats in user model
+* Get favorite user theme
+* Get difficult level of question and theme
+* Get difficult of round
+* Parse questions from wikipedia or wikidata
