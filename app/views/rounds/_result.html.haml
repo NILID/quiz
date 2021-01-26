@@ -1,14 +1,14 @@
-%h2 RESULTS
-= @round.user.email
-
+%h1 RESULTS #{link_to @round.user.login, @round.user}
 
 %table.table
   %thead
     %tr
       %th #
       %th= Question.human_attribute_name(:title)
-      %th= Answer.model_name.human.capitalize
       %th= Question.human_attribute_name(:author)
+      %th= Answer.model_name.human.capitalize
+      %th= Result.human_attribute_name(:success)
+
   %tbody
     - round.results.each.with_index(1) do |result, index|
       %tr
@@ -16,6 +16,8 @@
           = index
         %td
           = result.question.title
+        %td
+          = link_to result.question.author.login, result.question.author
         %td
           = result.answer.title
         %td

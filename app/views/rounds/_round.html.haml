@@ -1,0 +1,8 @@
+%tr
+  %td= round.theme.title
+  %td
+    = round.current_answers
+    \ /
+    = round.wrong_answers
+  %td= round.finished
+  %td= link_to 'Show', result_round_path(round)

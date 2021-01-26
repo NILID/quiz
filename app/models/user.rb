@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   audited
 
+  has_many :rounds
+
   enum role: %i[user moderator admin]
 
   after_initialize :set_default_role, :if => :new_record?
@@ -13,6 +15,9 @@ class User < ApplicationRecord
                     length:     { in: 3..12 },
                     format:     { with: /\A[A-Za-z0-9_]+\z/ }
 
+  def to_param
+    "#{id}-#{login.parameterize}"
+  end
 
   def set_default_role
     self.role ||= :user
