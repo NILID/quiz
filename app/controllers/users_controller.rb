@@ -32,6 +32,9 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:role)
+      list_params = []
+      list_params << [:role] if (current_user.admin?)
+
+      params.require(:user).permit(list_params)
     end
 end

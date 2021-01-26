@@ -27,7 +27,6 @@ class QuestionsController < ApplicationController
     @round.increment!(@result ? :current_answers : :wrong_answers)
 
     @round.results.create!( question_id: @question.id, answer_id: @answer_id, success: @result )
-    # redirect_to @question, notice: "Question was successfully checked. It was #{result} answer"
   end
 
   def edit
