@@ -5,9 +5,9 @@
     .progress
       = @round.results.pluck(:success).each do |result|
         - if result == false
-          .progress-bar-failed(style="width:10%")><
+          .progress-bar-failed(style="width:#{@round.questions_part}%")><
         - else
-          .progress-bar-success(style="width:10%")><
+          .progress-bar-success(style="width:#{@round.questions_part}%")><
 
   .col.col-12.text-muted.text-right
     = [Question.human_attribute_name(:author).downcase, question.author.login].join(': ')

@@ -10,6 +10,10 @@ class Round < ApplicationRecord
 
   QUESTION_MAX = 10
 
+  def questions_part
+    100 / questions_collection.count
+  end
+
   private
 
   def create_questions_collection

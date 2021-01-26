@@ -1,15 +1,8 @@
 .row
   .col.col-12
-    %p
-      %b Finished:
-      = @round.finished
-    %p
-      %b Questions:
-      = @round.questions_collection
-
-    = link_to 'Back', rounds_path
-
-  .col.col-12
     %h1.text-center Викторина на тему #{@round.theme.title}
     #questions
-      .text-center= link_to t('actions.start'), round_path(@round, page: 1), class: 'btn', remote: true
+      .py-3.text-center.text-muted
+        .lead= plural @round.questions_collection.count, 'question'
+
+      .text-center.py-3= link_to t('actions.start'), round_path(@round, page: 1), class: 'btn', remote: true

@@ -9,12 +9,10 @@
     font-family:Arial;
     font-size:16px;
     font-weight:bold;
-    padding:13px 22px;
+    padding:10px 22px;
     text-decoration:none;
-    text-shadow:0px 1px 0px #3d768a;
 
     @include border-radius(5px);
-    @include box-shadow(0px 10px 14px -7px #276873);
 
   &:hover {
     background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
@@ -32,8 +30,6 @@
     border:1px solid #a8a6a8;
     color:#39919e;
     font-weight: 100;
-
-    @include box-shadow(0px 5px 15px -7px #8a8a8a);
   }
 
   &.btn-outline:hover {
