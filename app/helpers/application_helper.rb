@@ -11,4 +11,8 @@ module ApplicationHelper
        result
      end
    end
+
+   def rus_datetime(datetime)
+     Russian.strftime(datetime, '%d.%m.%Y %H:%M')
+   end
 end

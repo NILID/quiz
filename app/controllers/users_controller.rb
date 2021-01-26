@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     authorize @user
+    @rounds = @user.rounds.order(created_at: :desc)
   end
 
   def index

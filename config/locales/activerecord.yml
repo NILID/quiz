@@ -14,6 +14,8 @@ ru:
         author: Автор
         theme_id: Тема
         title: Текст вопроса
+      round:
+        finished: Завершён
       theme:
         title: Название
       user:
