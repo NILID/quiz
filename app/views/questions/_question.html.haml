@@ -14,7 +14,7 @@
 
   .col.col-12
     %h2.text-center.question-title
-      %span.text-muted Вопрос № #{@pagy.page}.
+      %span.text-muted Вопрос № #{@round.questions.count + 1}.
       #{question.title}
 
   .col.col-12
