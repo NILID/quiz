@@ -1,4 +1,6 @@
 class Round < ApplicationRecord
+  audited
+
   before_create :create_questions_collection
 
   belongs_to :theme
