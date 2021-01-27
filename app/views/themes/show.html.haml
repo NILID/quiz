@@ -1,11 +1,6 @@
-.row
-  .col.col-12
-    %h1.text-center Викторина на тему &laquo;#{@theme.title}&raquo;
-    #questions
-      .py-3.text-center.text-muted
-        .lead= plural @theme.questions_count, 'question'
+= render 'rounds/single_round',
+    theme_title: @theme.title,
+    questions_count: @theme.questions_count do
 
-      .text-center.py-3
-        = link_to new_round_path(theme_id: @theme), class: 'btn', remote: true do
-          = t('actions.start')
-
+  = link_to new_round_path(theme_id: @theme), class: 'btn', remote: true do
+    = t('actions.start')

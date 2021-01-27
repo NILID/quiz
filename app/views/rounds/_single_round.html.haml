@@ -1,0 +1,8 @@
+.row
+  .col.col-12
+    %h1.text-center Викторина на тему &laquo;#{theme_title}&raquo;
+    #questions
+      .py-3.text-center.text-muted
+        .lead= plural questions_count, 'question'
+
+      .text-center.py-3= yield
