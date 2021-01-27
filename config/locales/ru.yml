@@ -21,7 +21,7 @@ ru:
     start: Начать
     close: Закрыть
     continue: Продолжить
-    next: 'Следующий ->'
+    next_html: Следующий &#8680;
   titles:
     audit: Аудит
     questions: Вопросы
