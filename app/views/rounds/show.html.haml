@@ -5,4 +5,4 @@
       .py-3.text-center.text-muted
         .lead= plural @round.questions_collection.count, 'question'
 
-      .text-center.py-3= link_to t('actions.continue'), round_path(@round, page: 1), class: 'btn', remote: true
+      .text-center.py-3= link_to t('actions.continue'), @round, class: 'btn', remote: true
