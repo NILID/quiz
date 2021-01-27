@@ -4,13 +4,19 @@
     %table.table
       %thead
         %tr
-          %th ID
-          %th Audit
+          %th Date
+          %th Who
+          %th Action
+          %th Output
       %tbody
-        - @audits.each do |a|
+        - @audits.each do |audit|
           %tr
             %td
-              = a.id
+              = rus_datetime(audit.created_at)
             %td
-              = a.output
+              = audit.user&.login
+            %td
+              = t("audit.actions.#{audit.action}")
+            %td
+              = audit.output
     = raw pagy_nav(@pagy)

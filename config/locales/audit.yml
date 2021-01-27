@@ -1,0 +1,5 @@
+ru:
+  audit:
+    actions:
+      create: создал
+      update: обновил
