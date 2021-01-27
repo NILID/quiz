@@ -1,6 +1,6 @@
 .row
   .col.col-12
-    = raw pagy_nav(@pagy)
+    .pb-2.text-right= raw pagy_nav(@pagy)
     %table.table
       %thead
         %tr
@@ -19,4 +19,4 @@
               = t("audit.actions.#{audit.action}")
             %td
               = audit.output
-    = raw pagy_nav(@pagy)
+    .pt-2.text-right= raw pagy_nav(@pagy)

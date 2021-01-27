@@ -1,3 +1,6 @@
+$secondary-color: rgba(0, 50, 115, 0.6);
+$main-color: #1d1f20;
+
 @mixin linear-gradient($start-color, $end-color, $position, $linear-position) {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$start-color}',endColorstr='#{$end-color}',GradientType=0);
   -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$start-color}',endColorstr='#{$end-color}',GradientType=0);
