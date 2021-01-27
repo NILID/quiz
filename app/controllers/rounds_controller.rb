@@ -19,8 +19,8 @@ class RoundsController < ApplicationController
 
   def result
     authorize @round
-
     @round.update_attribute(:finished, true)
+    @results = @round.results.includes(:answer, question: [:author])
   end
 
   def new
