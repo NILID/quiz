@@ -19,6 +19,12 @@ for (var i = 0, len = buttons.length; i < len; i++) {
     button.href="javascript:;";
 }
 
+// update progress
+//
+var progress_line = document.getElementById("progress");
+progress_line.innerHTML = "<%= render 'questions/progress', results: @round.results, part: @round.questions_part%>";
+
+
 // Set a fake timeout to get the highest timeout id
 // need to disable timer
 //
