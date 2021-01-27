@@ -1,4 +1,9 @@
-- next_url = @pagy.next ? round_path(@round, page: @pagy.next) : result_round_path(@round)
+- if @pagy.next
+  - next_url = round_path(@round)
+  - next_title = t('actions.next')
+- else
+  - next_url = result_round_path(@round)
+  - next_title = t('results.show')
 
 .row
   .col.col-12
@@ -30,4 +35,4 @@
         id: dom_id(answer)
 .row
   .col.col-12.text-center
-    = link_to t('actions.next'), next_url, class: 'btn d-none', id: 'next-button', remote: true
+    = link_to next_title, next_url, class: 'btn d-none', id: 'next-button', remote: true
