@@ -1,6 +1,6 @@
 .row
   .col.col-12
-    %h1.text-center Викторина на тему #{@theme.title}
+    %h1.text-center Викторина на тему &laquo;#{@theme.title}&raquo;
     #questions
       .py-3.text-center.text-muted
         .lead= plural @theme.questions_count, 'question'
