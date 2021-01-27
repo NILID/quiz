@@ -3,6 +3,7 @@ ru:
     models:
       answer: ответ
       question: вопрос
+      round: раунд
       theme: тема
       user: участник
     attributes:
