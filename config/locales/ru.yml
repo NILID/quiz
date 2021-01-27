@@ -20,6 +20,7 @@ ru:
     errors_done: '%{error} при заполнении формы:'
     start: Начать
     close: Закрыть
+    continue: Продолжить
     next: 'Следующий ->'
   titles:
     audit: Аудит

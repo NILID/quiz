@@ -5,4 +5,5 @@
     %span.text-success= round.current_answers
     \ /
     %span.text-error= round.wrong_answers
-  %td= round.finished
+  %td
+    = round.finished ? round.finished : link_to(t('actions.continue'), round)
