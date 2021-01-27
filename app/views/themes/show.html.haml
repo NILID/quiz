@@ -1,0 +1,11 @@
+.row
+  .col.col-12
+    %h1.text-center Викторина на тему #{@theme.title}
+    #questions
+      .py-3.text-center.text-muted
+        .lead= plural @theme.questions_count, 'question'
+
+      .text-center.py-3
+        = link_to new_round_path(theme_id: @theme), class: 'btn', remote: true do
+          = t('actions.start')
+

@@ -21,7 +21,7 @@
       - if @user.favorite_theme
         %p.py-1
           = t('users.favorite_theme')
-          = @user.favorite_theme
+          = link_to @user.favorite_theme.title, @user.favorite_theme
 
     .col.col-12
       %table.table

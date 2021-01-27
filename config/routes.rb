@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :themes, only: %i[new create]
+  resources :themes, only: %i[new create show]
 
   resources :rounds, except: %i[edit update create] do
     member do

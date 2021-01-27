@@ -7,6 +7,11 @@ class User < ApplicationRecord
 
   after_initialize :set_default_role, :if => :new_record?
 
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :rememberable, :validatable
+
   validates :email,
             :login, uniqueness: true
   validates :login, presence:   true,
@@ -33,11 +38,6 @@ class User < ApplicationRecord
   def favorite_theme
     # get count of themes ids
     themes_ids = self.rounds.pluck(:theme_id).each_with_object(Hash.new(0)){|string, hash| hash[string] += 1}
-    Theme.find(themes_ids.first).first.title if themes_ids.any?
+    Theme.find(themes_ids.first[0]) if themes_ids.any?
   end
-
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  # :recoverable, :rememberable, :validatable
-  devise :database_authenticatable, :registerable, :rememberable, :validatable
 end

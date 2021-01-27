@@ -1,7 +1,12 @@
 class ThemesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
+  before_action :set_theme, only: [:show]
 
   after_action :verify_authorized
+
+  def show
+    authorize @theme
+  end
 
   def new
     authorize @theme
@@ -21,6 +26,11 @@ class ThemesController < ApplicationController
   end
 
   private
+    def set_theme
+      @theme = Theme.find(params[:id])
+    end
+
+
     def theme_params
       params.require(:theme).permit(:title)
     end
