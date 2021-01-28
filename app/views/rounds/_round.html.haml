@@ -7,4 +7,7 @@
     \ /
     %span.text-error= round.wrong_answers
   %td
-    = round.finished ? round.finished : link_to(t('actions.continue'), round)
+    - if round.finished
+      %span.text-muted= t('themes.finished')
+    - else
+      = link_to t('actions.continue'), round

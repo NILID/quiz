@@ -4,7 +4,7 @@ class MainController < ApplicationController
 
   def index
     authorize :main, :index?
-    @themes = Theme.order(:title)
+    @themes = Theme.order(:title).where('questions_count > ?', 0 )
   end
 
   def audit
