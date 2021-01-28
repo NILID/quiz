@@ -27,10 +27,18 @@ RSpec.describe 'Rounds', type: :request do
 
       it "return new" do
         expect {
-          get new_round_url, params: { theme_id: create(:theme).id }
+          get new_round_url, params: { theme_id: create(:theme_with_questions).id }
         }.to change(Round, :count).by(1)
         expect(response).to redirect_to(round_url(Round.last))
       end
+
+      it "not return new if theme does not have questions" do
+        expect {
+          get new_round_url, params: { theme_id: create(:theme).id }
+        }.to change(Round, :count).by(0)
+        expect(response).to redirect_to(root_path)
+      end
+
     end
   end
 

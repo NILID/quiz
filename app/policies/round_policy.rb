@@ -13,6 +13,6 @@ class RoundPolicy < ApplicationPolicy
 
 
   def new?
-    true
+    record.theme.questions_count > 0
   end
 end

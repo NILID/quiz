@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   def user_not_authorized
     flash[:alert] = t('titles.denied')
     redirect_to(request.referrer || root_path)
+    logger.debug "==== \033[31mUser not authorized\033[0m ===="
   end
 
   protected
