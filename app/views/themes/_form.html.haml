@@ -1,7 +1,7 @@
 #theme_modal.modal.d-none
   .modal_dialog
     %header.modal_header
-      %h1= t('themes.new_title')
+      %h2= t('themes.new_title')
     .modal_content
       #theme_errors
       = form_with(model: Theme.new, id: 'new_theme_form') do |f|

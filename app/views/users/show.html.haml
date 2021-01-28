@@ -9,17 +9,17 @@
 
   - if @rounds.any?
     .col.col-12
-      %p.py-1
+      %p.pb-2
         = t('results.total')
         %strong.text-success= answers_stat[:correct]
         \ /
         %strong.text-error=   answers_stat[:wrong]
       - if answers_stat[:total]
-        %p.py-1
+        %p.pb-2
           = t('results.in_percent')
           #{answers_stat[:total]}%
       - if @user.favorite_theme
-        %p.py-1
+        %p.pb-2
           = t('users.favorite_theme')
           = link_to @user.favorite_theme.title, @user.favorite_theme
 

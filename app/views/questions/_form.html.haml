@@ -13,7 +13,7 @@
         = form.label :theme_id
         = form.select :theme_id, Theme.order(:title).map{ |theme| [theme.title, theme.id] }, { include_blank: t('actions.select') }
         .form-helptext
-          = link_to t('themes.add_new'), '#add_theme', id: 'add-theme'
+          = link_to t('themes.add_new'), '#add_theme', id: 'add-theme', onclick: "getThemeForm(this)"
 
       = form.fields_for :answers do |a|
         .field
@@ -22,7 +22,7 @@
             .col-11
               = a.text_field :title
             .col-1
-              = a.check_box :correct, class: 'right-checkbox'
+              = a.check_box :correct, class: 'right-checkbox answerCheckbox', onclick: "selectOnlyOneCheckbox(this)"
       .actions
         = form.submit class: 'btn'
         .float-right

@@ -1,5 +1,11 @@
 ru:
   activerecord:
+    errors:
+      models:
+        question:
+          attributes:
+            theme:
+              required: должна быть выбрана
     models:
       answer: ответ
       question: вопрос
@@ -14,6 +20,7 @@ ru:
       question:
         author: Автор
         theme_id: Тема
+        theme: Тема
         title: Текст вопроса
       round:
         finished: Завершён
