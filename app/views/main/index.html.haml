@@ -1,5 +1,6 @@
 .row
   .col.col-12
+    %h1= t('themes.choose')
     - if @themes.any?
       %ul.tags
         - @themes.each do |theme|
