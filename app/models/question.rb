@@ -27,7 +27,7 @@ class Question < ApplicationRecord
     # check if correct flag not choose
     #
     def check_correct_flag
-      errors.add(:correct, I18n.t('questions.flag_must_exist')) if self.answers.map(&:correct).count(true) == 0
+      errors.add(:correct, I18n.t('questions.flag_must_exist')) unless self.answers.map(&:correct).count(true) == 1
     end
 
 end

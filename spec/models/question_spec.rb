@@ -30,6 +30,12 @@ RSpec.describe Question, type: :model do
       expect(question.errors[:correct]).not_to be_empty
     end
 
+    it 'not have no more 1 answer be correct' do
+      question.answers = build_list(:answer, 2) + build_list(:answer, 2, correct: true)
+      expect(question.valid?).to be false
+      expect(question.errors[:correct]).not_to be_empty
+    end
+
   end
 
   describe 'question' do
