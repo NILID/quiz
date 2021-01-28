@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!
 
-  before_action :set_question, only: [:show, :edit, :update, :destroy, :check]
+  before_action :set_question, only: %i[show edit update destroy check]
   after_action :verify_authorized
 
   def index
