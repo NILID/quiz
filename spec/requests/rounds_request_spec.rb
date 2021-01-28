@@ -19,20 +19,26 @@ RSpec.describe 'Rounds', type: :request do
     describe "#{role} should" do
       login_user(role)
 
-      it "renders show" do
+      it 'renders show' do
         get round_path(round)
         expect(response).to be_successful
         expect(response).to render_template(:show)
       end
 
-      it "return new" do
-        expect {
-          get new_round_url, params: { theme_id: create(:theme_with_questions).id }
-        }.to change(Round, :count).by(1)
+      it 'renders result' do
+        expect{get result_round_path(round)}
+          .to change(Round.where(finished: true), :count).by(1)
+        expect(response).to be_successful
+        expect(response).to render_template(:result)
+      end
+
+      it 'return new' do
+        expect{ get new_round_url, params: { theme_id: create(:theme_with_questions).id }}
+          .to change(Round, :count).by(1)
         expect(response).to redirect_to(round_url(Round.last))
       end
 
-      it "not return new if theme does not have questions" do
+      it 'not return new if theme does not have questions' do
         expect {
           get new_round_url, params: { theme_id: create(:theme).id }
         }.to change(Round, :count).by(0)
@@ -43,10 +49,10 @@ RSpec.describe 'Rounds', type: :request do
   end
 
 
-  describe "User should" do
+  describe 'User should' do
     login_user(:user)
 
-    it "not returns index" do
+    it 'not returns index' do
       get rounds_url
       expect(response).to redirect_to(root_path)
     end
@@ -65,5 +71,9 @@ RSpec.describe 'Rounds', type: :request do
       get round_path(round)
     end
 
+    it 'renders result' do
+      expect{get result_round_path(round)}
+        .to change(Round.where(finished: true), :count).by(0)
+    end
   end
 end
