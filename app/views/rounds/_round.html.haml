@@ -1,5 +1,6 @@
 %tr
-  %td= link_to rus_datetime(round.created_at), result_round_path(round)
+  %td
+    = link_to_if round.finished, rus_datetime(round.created_at), result_round_path(round)
   %td= round.theme.title
   %td.text-center
     %span.text-success= round.current_answers

@@ -5,16 +5,22 @@ document.addEventListener("DOMContentLoaded", function() {
   var themeErrors    = document.getElementById('theme_errors');
   var themeForm      = document.getElementById('new_theme_form');
 
-  newThemeButton.addEventListener('click', function() {
-    themeModal.classList.remove('d-none');
-  });
+  if (typeof(newThemeButton) != 'undefined' && newThemeButton != null)
+  {
+    newThemeButton.addEventListener('click', function() {
+      themeModal.classList.remove('d-none');
+    });
+  };
 
-  closeModal.addEventListener('click', function() {
-    // Remove old errors
-    // Reset and hide form
+  if (typeof(closeModal) != 'undefined' && closeModal != null)
+  {
+    closeModal.addEventListener('click', function() {
+      // Remove old errors
+      // Reset and hide form
 
-    themeModal.classList.add('d-none');
-    themeErrors.innerHTML = "";
-    themeForm.reset();
-  });
+      themeModal.classList.add('d-none');
+      themeErrors.innerHTML = "";
+      themeForm.reset();
+    });
+  };
 });
