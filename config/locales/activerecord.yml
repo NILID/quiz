@@ -12,6 +12,7 @@ ru:
       round: раунд
       theme: тема
       user: участник
+      result: результат
     attributes:
       answer:
         title: Текст ответа
