@@ -3,6 +3,9 @@
     %h1.text-center Викторина на тему &laquo;#{theme_title}&raquo;
     #questions
       .py-3.text-center.text-muted
-        .lead= plural questions_count, 'question'
+        .lead
+          - if questions_count >=11
+            = t('questions.from_10')
+          = plural questions_count, 'question'
 
       .text-center.py-3= yield

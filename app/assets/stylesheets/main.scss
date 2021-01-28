@@ -106,9 +106,18 @@ h1 {
   color: $basic-color;
   padding-bottom: 15px;
   margin-bottom: 20px;
-  font-size: 30px;
+  font-size: 2em;
   border-bottom: 1px solid $basic-color;
 }
+
+h2 {
+  color: $basic-color;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  font-size: 1.6em;
+  border-bottom: 1px solid $basic-color;
+}
+
 
 .timer {
   width: 40px;
@@ -132,26 +141,16 @@ h1 {
   color: #999;
 }
 
-.py-1 { padding: 10px 0; }
-.py-2 { padding: 20px 0; }
-.py-3 { padding: 30px 0; }
+@each $size in $space-sizes {
+  .py-#{$size} { padding:        #{$size*10}px 0; }
+  .pb-#{$size} { padding-bottom: #{$size*10}px;   }
+  .pt-#{$size} { padding-top:    #{$size*10}px;   }
+  .pl-#{$size} { padding-left:   #{$size*10}px;   }
+  .pr-#{$size} { padding-right:  #{$size*10}px;   }
 
-.pb-1 { padding-bottom: 10px; }
-.pb-2 { padding-bottom: 20px; }
-.pb-3 { padding-bottom: 30px; }
-
-.pt-1 { padding-top: 10px; }
-.pt-2 { padding-top: 20px; }
-.pt-3 { padding-top: 30px; }
-
-.my-1 { margin: 10px 0; }
-.my-2 { margin: 20px 0; }
-.my-3 { margin: 30px 0; }
-
-.mb-1 { margin-bottom: 10px; }
-.mb-2 { margin-bottom: 20px; }
-.mb-3 { margin-bottom: 30px; }
-
-.mt-1 { margin-top: 10px; }
-.mt-2 { margin-top: 20px; }
-.mt-3 { margin-top: 30px; }
+  .my-#{$size} { margin:        #{$size*10}px 0; }
+  .mb-#{$size} { margin-bottom: #{$size*10}px;   }
+  .mt-#{$size} { margin-top:    #{$size*10}px;   }
+  .ml-#{$size} { margin-left:   #{$size*10}px;   }
+  .mr-#{$size} { margin-right:  #{$size*10}px;   }
+}
