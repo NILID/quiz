@@ -8,6 +8,7 @@
           %th= t('audit.who')
           %th= t('audit.action')
           %th= t('audit.output')
+          %th= t('audit.comment')
       %tbody
         - @audits.each do |audit|
           %tr
@@ -19,4 +20,7 @@
               = t("audit.actions.#{audit.action}")
             %td
               = audit.output
+            %td
+              = audit.comment
+
     .pt-2.text-right= raw pagy_nav(@pagy)

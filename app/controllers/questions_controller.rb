@@ -26,7 +26,10 @@ class QuestionsController < ApplicationController
     @result = @question.answers.where(correct: true).first.id.to_s == @answer_id
     @round.increment!(@result ? :current_answers : :wrong_answers)
 
-    @round.results.create!( question_id: @question.id, answer_id: @answer_id, success: @result )
+    @round.results.create!( question_id: @question.id,
+                              answer_id: @answer_id,
+                                success: @result,
+              audit_comment: t((@result ? 'results.success' : 'results.failed'), question: @question.title))
   end
 
   def edit
