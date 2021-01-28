@@ -11,4 +11,5 @@
 - @question.answers.each do |answer|
   .row
     .col.col-12
-      = link_to answer.title, '#', class: 'button'
+      .button.mb-2.btn-answer= answer.title
+

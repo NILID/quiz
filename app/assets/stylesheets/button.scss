@@ -40,7 +40,7 @@
 }
 
 
-a.button {
+.button {
   background-color: $basic-color;
   color: white;
   padding: 1em 1.5em;
@@ -53,16 +53,16 @@ a.button {
   @include box-shadow(0 5px 0 darken($basic-color, 10%));
   @include border-radius(5px);
 
-  &.button:hover {
+  &:hover {
     background-color: rgba(0, 50, 115, 0.6);
-  @include box-shadow(0 5px 0 darken($basic-color, 20%));
+    @include box-shadow(0 5px 0 darken($basic-color, 20%));
   }
-  
-  a.button:active {
+
+  a:active {
     @include box-shadow(none);
     top: 5px;
   }
-  
+
   &.btn-by { margin-bottom: 20px; }
 
   &.btn-expired {
