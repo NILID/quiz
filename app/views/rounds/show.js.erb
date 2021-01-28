@@ -4,7 +4,7 @@ questions.innerHTML = "<%=j render @questions %>";
 var el = document.getElementById('timer'),
     next_button = document.getElementById('next-button'),
     empty_result_button = document.getElementById('empty-result-button'),
-    total = 15,
+    total = <%= Round::LIMIT_TIME %>,
 
     timeinterval = setInterval(function () {
         total = --total;

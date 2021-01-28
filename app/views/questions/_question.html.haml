@@ -19,7 +19,7 @@
       #{question.title}
 
   .col.col-12
-    #timer.timer{data: {url: next_url } } 15
+    #timer.timer= Round::LIMIT_TIME
 
 .row
   - question.answers.shuffle.each do |answer|

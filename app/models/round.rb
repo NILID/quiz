@@ -11,6 +11,7 @@ class Round < ApplicationRecord
   serialize :questions_collection
 
   QUESTION_MAX = 10
+  LIMIT_TIME   = 15
 
   def questions_part
     100 / questions_collection.count
