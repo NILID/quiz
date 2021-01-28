@@ -18,4 +18,4 @@
         %td
           = link_to result.question.author.login, result.question.author
         %td{class: result.success ? 'result-success' : 'result-wrong'}
-          = result.answer.title
+          = result.answer_id ? result.answer.title : t('answers.empty')

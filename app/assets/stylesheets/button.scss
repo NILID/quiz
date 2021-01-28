@@ -1,39 +1,71 @@
 @import 'mixins';
 
 .btn {
-    background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-    background-color:#599bb3;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
-    font-family:Arial;
-    font-size:16px;
-    font-weight:bold;
-    padding:10px 22px;
-    text-decoration:none;
+    background: linear-gradient(to bottom, $basic-color 5%, darken($basic-color, 10%) 100%);
+    background-color: $basic-color;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 22px;
+    text-decoration: none;
+    border: 1px solid darken($basic-color, 10%);
 
     @include border-radius(5px);
 
   &:hover {
-    background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
-    background-color:#408c99;
+    background: linear-gradient(to bottom, darken($basic-color, 10%) 5%, $basic-color 100%);
+    background-color: darken($basic-color, 10%);
   }
 
   &:active {
-    position:relative;
-    top:1px;
+    position: relative;
+    top: 1px;
   }
 
   &.btn-outline {
-    background:linear-gradient(to bottom, #ffffff 5%, #e6e6e6 100%);
-    background-color:#ffffff;
-    border:1px solid #a8a6a8;
-    color:#39919e;
+    background: linear-gradient(to bottom, $light-grey 5%, darken($light-grey, 10%) 100%);
+    background-color: $light-grey;
+    border: 1px solid darken($light-grey, 10%);
+    color: #666;
     font-weight: 100;
   }
 
   &.btn-outline:hover {
-    background:linear-gradient(to bottom, #e6e6e6 5%, #ffffff 100%);
-    background-color:#e6e6e6;
+    background: linear-gradient(to bottom, darken($light-grey, 10%) 5%, $light-grey 100%);
+    background-color: darken($light-grey, 10%)
+  }
+}
+
+
+a.button {
+  background-color: $basic-color;
+  color: white;
+  padding: 1em 1.5em;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  font-weight: 600;
+
+  @include box-shadow(0 5px 0 darken($basic-color, 10%));
+  @include border-radius(5px);
+
+  &.button:hover {
+    background-color: rgba(0, 50, 115, 0.6);
+  @include box-shadow(0 5px 0 darken($basic-color, 20%));
+  }
+  
+  a.button:active {
+    @include box-shadow(none);
+    top: 5px;
+  }
+  
+  &.btn-by { margin-bottom: 20px; }
+
+  &.btn-expired {
+    background-color: lighten($basic-color, 10%);
   }
 }

@@ -27,8 +27,15 @@
       = link_to answer.title,
         check_question_path(question, answer_id: answer.id, round_id: @round.id),
         remote: true,
-        class: 'button btn-by',
+        class: 'button mb-2 btn-answer',
         id: dom_id(answer)
+
+  = link_to 'empty question',
+    check_question_path(question, round_id: @round.id),
+    remote: true,
+    class: 'd-none',
+    id: 'empty-result-button'
+
 .row
   .col.col-12.text-center
     = link_to next_title, next_url, class: 'btn d-none', id: 'next-button', remote: true
