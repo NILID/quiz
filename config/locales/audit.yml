@@ -3,3 +3,7 @@ ru:
     actions:
       create: создал
       update: обновил
+    date: Дата
+    who: Инициатор
+    action: Действие
+    output: Сущность
