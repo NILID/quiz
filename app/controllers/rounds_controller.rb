@@ -42,8 +42,4 @@ class RoundsController < ApplicationController
     def set_round
       @round = Round.find(params[:id])
     end
-
-    def round_params
-      params.require(:round).permit(:theme_id, :user_id, :current_answers, :wrong_answers, :finished)
-    end
 end
