@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   after_action :verify_authorized
 
   def index
-    @pagy, @questions = pagy(Question.all.includes(:theme, :author))
+    @pagy, @questions = pagy(Question.all.includes(:theme, :author).order(created_at: :desc))
     authorize @questions
   end
 

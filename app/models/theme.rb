@@ -1,4 +1,6 @@
 class Theme < ApplicationRecord
+  audited
+
   validates  :title, uniqueness: true,
                      presence:   true
 

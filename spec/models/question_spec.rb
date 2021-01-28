@@ -23,6 +23,13 @@ RSpec.describe Question, type: :model do
         expect(new_question.errors[:title]).not_to be_empty
       end
     end
+
+    it 'not have 4 answers with no correct' do
+      question.answers = build_list(:answer, 4)
+      expect(question.valid?).to be false
+      expect(question.errors[:correct]).not_to be_empty
+    end
+
   end
 
   describe 'question' do
@@ -38,10 +45,9 @@ RSpec.describe Question, type: :model do
         expect(question.errors[:answers]).not_to be_empty
       end
 
-      question.answers = build_list(:answer, 4)
+      question.answers = build_list(:answer, 3) << build(:answer, correct: true)
       expect(question.valid?).to be true
       expect(question.errors[:answers]).to be_empty
     end
   end
-
 end

@@ -22,6 +22,7 @@ ru:
         theme_id: Тема
         theme: Тема
         title: Текст вопроса
+        correct: Флаг правильного ответа
       round:
         finished: Завершён
       theme:
