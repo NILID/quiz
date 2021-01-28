@@ -24,6 +24,7 @@
           = link_to @user.favorite_theme.title, @user.favorite_theme
 
     .col.col-12
+      .pb-2.text-right= raw pagy_nav(@pagy)
       %table.table
         %thead
           %tr

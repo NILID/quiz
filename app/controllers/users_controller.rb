@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
     authorize @user
     @rounds = @user.rounds.includes(:theme).order(created_at: :desc)
+    @pagy, @rounds = pagy(@rounds)
   end
 
   def index

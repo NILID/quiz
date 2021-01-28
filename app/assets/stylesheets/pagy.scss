@@ -2,19 +2,18 @@
 
 .pagination {
   a, .page.disabled, .page.active {
-    border: solid 1px darken($main-color, 10%);
-    color: darken($main-color, 45%);
+    border: solid 1px lighten($basic-color, 10%);
     text-decoration: none;
     text-transform: uppercase;
     display: inline-block;
     text-align: center;
-    padding: 0.5rem 0.9rem;
+    padding: 0.3rem 0.5rem;
 
     @include border-radius(5px);
   }
   a {
     text-decoration: none;
-    color: darken($main-color, 45%);
+    color: #666;
   }
 
   .page.active {

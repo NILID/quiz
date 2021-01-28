@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   after_action :verify_authorized
 
   def index
-    @questions = Question.all.includes(:theme, :author)
+    @pagy, @questions = pagy(Question.all.includes(:theme, :author))
     authorize @questions
   end
 
@@ -42,10 +42,8 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: t('flash.was_created', item: Question.model_name.human) }
-        format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -55,10 +53,8 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to @question, notice: t('flash.was_updated', item: Question.model_name.human) }
-        format.json { render :show, status: :ok, location: @question }
       else
         format.html { render :edit }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,7 +65,6 @@ class QuestionsController < ApplicationController
     @question.destroy
     respond_to do |format|
       format.html { redirect_to questions_url, notice: t('flash.was_destroyed', item: Question.model_name.human)  }
-      format.json { head :no_content }
     end
   end
 

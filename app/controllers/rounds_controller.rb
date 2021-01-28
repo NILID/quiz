@@ -32,10 +32,8 @@ class RoundsController < ApplicationController
     respond_to do |format|
       if @round.save
         format.html { redirect_to @round }
-        format.json { render :show, status: :created, location: @round }
       else
         format.html { render :new }
-        format.json { render json: @round.errors, status: :unprocessable_entity }
       end
     end
   end

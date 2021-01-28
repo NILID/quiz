@@ -6,6 +6,7 @@
 .row
   .col.col-12
     - if @questions.any?
+      .pb-2.text-right= raw pagy_nav(@pagy)
       %table.table
         %thead
           %tr
@@ -27,5 +28,7 @@
                       %ul
                         %li= link_to t('actions.edit'), edit_question_path(question)
                         %li= link_to t('actions.del'), question, method: :delete, data: { confirm: t('actions.sure') }
+      .pt-2.text-right= raw pagy_nav(@pagy)
+
     - else
       = t('shared.empty')

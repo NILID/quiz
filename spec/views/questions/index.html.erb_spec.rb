@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "questions/index", type: :view do
   before(:each) do
     @questions = create_list(:question, 2)
+    @pagy, @questions = pagy(Question.all)
   end
 
   let(:user) { create(:user) }
