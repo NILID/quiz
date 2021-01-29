@@ -30,10 +30,10 @@
     content: '';
     z-index: 2;
     position: absolute;
-    top: 10px;
+    top: 14px;
     right: -2px;
     width: 5px;
-    height: 6px;
+    height: 8px;
     background: #eb6b22;
 
     @include opacity(.95);
