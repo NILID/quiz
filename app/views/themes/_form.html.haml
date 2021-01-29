@@ -1,14 +1,15 @@
-#theme_modal.modal.d-none
-  .modal_dialog
-    %header.modal_header
-      %h2= t('themes.new_title')
-    .modal_content
-      #theme_errors
-      = form_with(model: Theme.new, id: 'new_theme_form') do |f|
-        = f.label :title
-        = f.text_field :title
-        .modal-actions
-          = f.submit t('actions.add'), class: 'btn'
-          .float-right
-            .btn.btn-outline#modal_close
-              = t('actions.close')
+.row
+  .col.col-12
+    %h1= formtitle
+
+    = form_with(model: theme, local: true) do |form|
+      = render 'application/error', object: theme
+
+      .field
+        = form.label :title
+        = form.text_area :title
+
+      .actions
+        = form.submit t('actions.save'), class: 'btn'
+        .float-right
+          = link_to t('actions.back'), themes_path, class: 'btn btn-outline'

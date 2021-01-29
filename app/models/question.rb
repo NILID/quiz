@@ -5,7 +5,7 @@ class Question < ApplicationRecord
                       foreign_key:   'author_id'
   belongs_to :theme,  counter_cache: true
 
-  has_many :answers, inverse_of: :question
+  has_many :answers, inverse_of: :question, dependent: :destroy
   has_many :results
   has_many :rounds, through: :results
 

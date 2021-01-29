@@ -10,6 +10,27 @@ RSpec.describe 'Themes', type: :request do
       it 'create a new Theme' do
         expect{ post themes_path(theme: attributes_for(:theme)), xhr: true}.to change(Theme, :count).by(1)
       end
+
+      it 'returns new' do
+        get new_theme_path
+        expect(response).to render_template(:new)
+      end
+
+      it 'returns edit' do
+        get edit_theme_path(theme)
+        expect(response).to render_template(:edit)
+      end
+
+      it 'updates' do
+        put theme_path(theme, theme: { title: 'New title' })
+        theme.reload
+        expect(response).to redirect_to(themes_url)
+      end
+
+      it 'destroys' do
+        expect{ delete theme_path(theme) }.to change(Theme, :count).by(-1)
+        expect(response).to redirect_to(themes_path)
+      end
     end
   end
 
@@ -26,25 +47,66 @@ RSpec.describe 'Themes', type: :request do
   end
 
 
-  describe 'User should' do
+  describe 'User should not' do
     login_user(:user)
 
-    it 'not create a new Theme' do
+    after(:each) do
+      expect(response).to redirect_to(root_path)
+    end
+
+    it 'returns new' do
+      get new_theme_path
+    end
+
+    it 'create a new Theme' do
       expect{ post themes_path(theme: attributes_for(:theme)), xhr: true}.to change(Theme, :count).by(0)
       expect(response).to redirect_to(root_path)
+    end
+
+    it 'returns edit' do
+      get edit_theme_path(theme)
+    end
+
+    it 'updates' do
+      put theme_path(theme, theme: { title: 'New title' })
+    end
+
+    it 'destroys' do
+      expect{ delete theme_path(theme) }.to change(Theme, :count).by(0)
     end
   end
 
   describe 'unreg user should not' do
-    it "renders show" do
-      get theme_path(theme)
-      expect(response).to be_successful
-      expect(response).to render_template(:show)
+    describe 'with html' do
+      after(:each) do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+
+      it 'not returns new' do
+        get new_theme_path
+      end
+
+      it 'not renders show' do
+        get theme_path(theme)
+      end
+
+      it 'not returns edit' do
+        get edit_theme_path(theme)
+      end
+
+      it 'not updates' do
+        put theme_path(theme, theme: { title: 'New title' })
+      end
+
+      it 'destroys' do
+        expect{ delete theme_path(theme) }.to change(Theme, :count).by(0)
+      end
     end
 
-
-    it 'create a new Theme' do
-      expect{ post themes_path(theme: attributes_for(:theme)), xhr: true}.to change(Theme, :count).by(0)
+    describe 'with remote js' do
+      it 'create a new Theme' do
+        expect{ post themes_path(theme: attributes_for(:theme)), xhr: true}.to change(Theme, :count).by(0)
+      end
     end
   end
 end

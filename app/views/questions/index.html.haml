@@ -1,7 +1,8 @@
-.row
+.row.mb-3
   .col.col-6
     - if policy(Question).new?
-      = link_to t('questions.add'), new_question_path, class: 'btn btn-outline btn-sm mb-2'
+      = link_to t('questions.add'), new_question_path, class: 'btn btn-outline btn-sm'
+    = link_to t('themes.title'), themes_path, class: 'btn btn-outline btn-sm ml-3'
   .col.col-6.text-right
     = render 'questions/search_form', q: @q
 
