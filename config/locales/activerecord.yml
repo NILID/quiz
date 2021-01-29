@@ -18,6 +18,12 @@ ru:
         title: Текст ответа
       answers:
         title: Текст ответа
+      audit:
+        action: Действие
+        created_at: Дата создания
+        comment: Примечание
+        user: Инициатор
+        auditable_type: Модель
       question:
         author: Автор
         theme_id: Тема
