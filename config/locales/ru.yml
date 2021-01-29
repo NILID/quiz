@@ -12,6 +12,8 @@ ru:
     back: Назад
     logout: Выйти
     select: == Выбрать ==
+    select_action: == Выберите действие ==
+    select_model: == Выберите модель ==
     sign_in: Войти
     sign_in_title: Вход
     sign_up: Регистрация

@@ -154,3 +154,11 @@ h2 {
   .ml-#{$size} { margin-left:   #{$size*10}px;   }
   .mr-#{$size} { margin-right:  #{$size*10}px;   }
 }
+
+#audit_search {
+  .btn {
+    margin-top: 6px;
+    dipslay: block;
+    width: 100%;
+  }
+}

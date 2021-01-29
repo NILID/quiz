@@ -1,4 +1,5 @@
 class Audit < Audited::Audit
+  MODELS = %w[Answer Question Round Result Theme User].freeze
 
   def output
     name =

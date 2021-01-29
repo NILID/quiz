@@ -9,6 +9,9 @@ class MainController < ApplicationController
 
   def audit
     authorize :main, :audit?
-    @pagy, @audits = pagy(Audit.includes(:user, :auditable).order(created_at: :desc))
+    @q = Audit.ransack(params[:q])
+    @audits = @q.result(distinct: true)
+
+    @pagy, @audits = pagy(@audits.includes(:user, :auditable).order(created_at: :desc))
   end
 end

@@ -1,3 +1,5 @@
+= render 'main/audit_search_form', q: @q
+
 .row
   .col.col-12
     .pb-2.text-right= raw pagy_nav(@pagy)
@@ -7,7 +9,7 @@
           %th= t('audit.date')
           %th= t('audit.who')
           %th= t('audit.action')
-          %th= t('audit.output')
+          %th= t('audit.model')
           %th= t('audit.comment')
       %tbody
         - @audits.each do |audit|

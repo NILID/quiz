@@ -1,10 +1,12 @@
 ru:
   audit:
     actions:
-      create: создал
-      update: обновил
+      create: создание
+      update: обновление
+      destroy: удаление
     date: Дата
     who: Инициатор
     action: Действие
-    output: Сущность
+    model: Модель
     comment: Примечание
+    search_comment: поиск по примечанию
