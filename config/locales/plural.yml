@@ -1,5 +1,8 @@
 ru:
   plural:
+    character_1: символ минимум
+    character_2: символа минимум
+    character_10: символов минимум
     error_done_1: ошибка допущена
     error_done_2: ошибки допущены
     error_done_10: ошибок допущено

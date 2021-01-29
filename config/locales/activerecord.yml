@@ -38,5 +38,6 @@ ru:
         login: Логин
         password: Пароль
         password_confirmation: Повторите пароль
+        current_password: Текущий пароль
         role: Роль
         remember_me: Запомнить меня
