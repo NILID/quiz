@@ -3,10 +3,17 @@
 
 This is a Ruby on Rails based quiz application.
 
+# DEMO
 There is a demo  [running on Heroku](https://quizavr.herokuapp.com/). Please feel free to explore.
 
-# TODO
+There are 3 users with roles:
+* administrator - s_admin@mail.me
+* moderator     - s_moder@mail.me
+* simple user   - s_user@mail.me
 
+Passwords for all: 12345678
+
+# TODO
 * Ability to create user with admin role
 * Save stats in user model
 * Get favorite user theme
