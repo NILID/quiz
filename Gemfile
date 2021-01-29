@@ -40,6 +40,7 @@ gem 'audited', '~> 4.9'
 gem 'haml-rails'
 gem 'pagy'
 gem 'russian'
+gem 'ransack'
 
 group :heroku do
   gem 'pg'

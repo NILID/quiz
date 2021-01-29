@@ -20,6 +20,12 @@
     padding: 5px 11px;
   }
 
+  &.btn-md {
+    font-size: 14px;
+    padding: 7px 11px;
+  }
+
+
   &:hover {
     background: linear-gradient(to bottom, darken($basic-color, 10%) 5%, $basic-color 100%);
     background-color: darken($basic-color, 10%);
