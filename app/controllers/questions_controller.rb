@@ -26,13 +26,7 @@ class QuestionsController < ApplicationController
     authorize @question
     @answer_id = params[:answer_id]
     @round = Round.find(params[:round_id])
-    @result = @question.answers.where(correct: true).first.id.to_s == @answer_id
-    @round.increment!(@result ? :current_answers : :wrong_answers)
-
-    @round.results.create!( question_id: @question.id,
-                              answer_id: @answer_id,
-                                success: @result,
-              audit_comment: t((@result ? 'results.success' : 'results.failed'), question: @question.title))
+    @result = @round.make_result!(@question, @answer_id)
   end
 
   def edit

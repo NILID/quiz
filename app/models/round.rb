@@ -17,6 +17,17 @@ class Round < ApplicationRecord
     100 / questions_collection.count
   end
 
+  def make_result!(question, answer_id)
+    result = question.answers.where(correct: true).first.id.to_s == answer_id
+    self.increment!(result ? :current_answers : :wrong_answers)
+
+    self.results.create!( question_id: question.id,
+                            answer_id: answer_id,
+                              success: result,
+          audit_comment: I18n.t((result ? 'results.success' : 'results.failed'), question: question.title))
+    return result
+  end
+
   private
 
   def create_questions_collection
