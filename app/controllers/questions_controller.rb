@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
     @q = Question.ransack(params[:q])
     @questions = @q.result(distinct: true)
 
-    @pagy, @questions = pagy(@questions.order(created_at: :desc))
+    @pagy, @questions = pagy(@questions.includes(:theme, :author).order(created_at: :desc))
     authorize @questions
   end
 

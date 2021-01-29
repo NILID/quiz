@@ -12,6 +12,6 @@ class MainController < ApplicationController
     @q = Audit.ransack(params[:q])
     @audits = @q.result(distinct: true)
 
-    @pagy, @audits = pagy(@audits.includes(:user, :auditable).order(created_at: :desc))
+    @pagy, @audits = pagy(@audits.includes(:user).order(created_at: :desc))
   end
 end
