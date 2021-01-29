@@ -15,4 +15,5 @@ ru:
       finish_theme: завершил на тему "%{theme}"
       theme_name: название "%{theme}"
       new_theme_name: название сменилось с "%{old_theme}" на "%{theme}"
+      new_question: '"%{title}" на тему "%{theme}"'
       change_role: смена роли на "%{role}"

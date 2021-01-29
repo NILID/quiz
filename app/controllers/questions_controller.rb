@@ -45,6 +45,8 @@ class QuestionsController < ApplicationController
 
     @question.author = current_user
 
+    @question.audit_comment = t('audit.comments.new_question', theme: @question.theme&.title, title: @question.title)
+
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: t('flash.was_created', item: Question.model_name.human) }
