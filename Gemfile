@@ -41,6 +41,7 @@ gem 'haml-rails'
 gem 'pagy'
 gem 'russian'
 gem 'ransack'
+gem "switch_user"
 
 group :heroku do
   gem 'pg'
