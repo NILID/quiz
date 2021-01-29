@@ -17,6 +17,10 @@ class Round < ApplicationRecord
     100 / questions_collection.count
   end
 
+  def make_finish
+   self.update_attributes(finished: true, audit_comment: I18n.t('audit.comments.finish_theme', theme: self.theme.title))
+  end
+
   def make_result!(question, answer_id)
     result = question.answers.where(correct: true).first.id.to_s == answer_id
     self.increment!(result ? :current_answers : :wrong_answers)
@@ -24,7 +28,7 @@ class Round < ApplicationRecord
     self.results.create!( question_id: question.id,
                             answer_id: answer_id,
                               success: result,
-          audit_comment: I18n.t((result ? 'results.success' : 'results.failed'), question: question.title))
+                        audit_comment: I18n.t((result ? 'results.success' : 'results.failed'), question: question.title))
     return result
   end
 

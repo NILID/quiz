@@ -19,7 +19,7 @@ class RoundsController < ApplicationController
 
   def result
     authorize @round
-    @round.update_attributes(finished: true, audit_comment: t('audit.comments.finish_theme', theme: @round.theme.title))
+    @round.make_finish unless @round.finished
     @results = @round.results.includes(:answer, question: [:author])
   end
 

@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Questions', type: :request do
   let!(:question) { create(:question) }
   let!(:round)    { create(:round) }
+  let!(:theme)    { round.theme }
 
   %i[admin moderator].each do |role|
     describe "#{role} should" do
@@ -54,16 +55,17 @@ RSpec.describe 'Questions', type: :request do
       login_user(role)
 
       it 'returns check' do
-        theme = create(:theme)
-        questions = create_list(:question, 5, theme: theme)
+        questions = create_list(:question, 2, theme: theme)
         round = create(:round, theme: theme)
-        get check_question_path(questions.first, answers_id: questions.first.current_answer_id, round_id: round.id), xhr: true
+        expect{ get check_question_path(questions.first, answers_id: questions.first.current_answer_id, round_id: round.id), xhr: true }
+          .to change(round.results, :count).by(1)
+
         expect(response).to be_successful
       end
     end
   end
 
-  describe 'user should' do
+  describe 'user should not' do
     login_user(:user)
 
     after(:each) do
@@ -79,20 +81,20 @@ RSpec.describe 'Questions', type: :request do
     end
 
 
-    it 'not returns edit' do
+    it 'returns edit' do
       get edit_question_path(question)
     end
 
-    it 'not destroys' do
+    it 'destroys' do
       delete question_path(question)
       expect{ response }.to change(Question, :count).by(0)
     end
 
-    it 'not updates' do
+    it 'updates' do
       put question_path(question, question: { title: 'New title' })
     end
 
-    it 'not returns new' do
+    it 'returns new' do
       get new_question_path
     end
   end
@@ -124,6 +126,15 @@ RSpec.describe 'Questions', type: :request do
 
     it 'returns new' do
       get new_question_path
+    end
+  end
+
+  describe 'unreg user with remote js' do
+    it 'not returns check' do
+      questions = create_list(:question, 2, theme: theme)
+      round = create(:round, theme: theme)
+      expect{ get check_question_path(questions.first, answers_id: questions.first.current_answer_id, round_id: round.id), xhr: true}
+        .to change(round.results, :count).by(0)
     end
   end
 end
