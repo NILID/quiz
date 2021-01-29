@@ -25,6 +25,8 @@ class ThemesController < ApplicationController
     @theme = Theme.new(theme_params)
     authorize @theme
 
+    @theme.audit_comment = t('audit.comments.theme_name', theme: @theme.title)
+
     respond_to do |format|
       if @theme.save
         format.html { redirect_to themes_url, notice: t('flash.was_created', item: Theme.model_name.human) }

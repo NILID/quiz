@@ -19,7 +19,7 @@ class RoundsController < ApplicationController
 
   def result
     authorize @round
-    @round.update_attribute(:finished, true)
+    @round.update_attributes(finished: true, audit_comment: t('audit.comments.finish_theme', theme: @round.theme.title))
     @results = @round.results.includes(:answer, question: [:author])
   end
 
@@ -28,6 +28,8 @@ class RoundsController < ApplicationController
     @round.user = current_user
 
     authorize @round
+
+    @round.audit_comment = t('audit.comments.on_theme', theme: @round.theme.title)
 
     respond_to do |format|
       if @round.save

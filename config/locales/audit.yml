@@ -10,3 +10,9 @@ ru:
     model: Модель
     comment: Примечание
     search_comment: поиск по примечанию
+    comments:
+      on_theme: на тему "%{theme}"
+      finish_theme: завершил на тему "%{theme}"
+      theme_name: название "%{theme}"
+      new_theme_name: название сменилось с "%{old_theme}" на "%{theme}"
+      change_role: смена роли на "%{role}"

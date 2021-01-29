@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def update
     authorize @user
+    @user.audit_comment = t('audit.comments.change_role', role: @user.role)
 
     if @user.update(user_params)
       redirect_to users_url, notice: t('flash.was_created', item: User.model_name.human)
