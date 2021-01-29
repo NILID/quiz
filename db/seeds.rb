@@ -2,14 +2,13 @@ puts '-'*50
 puts 'Please, run db:seed once, no more =)'
 puts '-'*50
 
-User.create!(email: 'user@mail.test',  login: 'user_test', password: '12345678', password_confirmation: '12345678')
+audit_text = 'создано автоматически db:seed'
+
+User.create!(email: 's_user@mail.me',  login: 's_user',  password: '12345678', password_confirmation: '12345678', audit_comment: audit_text)
+User.create!(email: 's_moder@mail.me', login: 's_moder', password: '12345678', password_confirmation: '12345678', role: 'moderator', audit_comment: audit_text)
+User.create!(email: 's_admin@mail.me', login: 's_admin', password: '12345678', password_confirmation: '12345678', role: 'admin', audit_comment: audit_text)
 
 author = User.first
-
-unless author
-  puts '!!!!  You need create one user with admin role first of all !!!!'
-  return
-end
 
 themes = [
   {  title: 'Политики',
@@ -62,9 +61,9 @@ themes = [
 ]
 
 themes.each do |t|
-  theme = Theme.create!(title: t[:title])
+  theme = Theme.create!(title: t[:title], audit_comment: audit_text)
 
   t[:questions].each do |question|
-    Question.create!(title: question[:title], author: author, theme: theme, answers_attributes: question[:answers_attributes])
+    Question.create!(title: question[:title], author: author, theme: theme, answers_attributes: question[:answers_attributes], audit_comment: audit_text)
   end
 end
