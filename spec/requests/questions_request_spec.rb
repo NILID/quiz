@@ -57,11 +57,24 @@ RSpec.describe 'Questions', type: :request do
       it 'returns check' do
         questions = create_list(:question, 2, theme: theme)
         round = create(:round, theme: theme)
-        expect{ get check_question_path(questions.first, answers_id: questions.first.current_answer_id, round_id: round.id), xhr: true }
+        expect{ get check_question_path(questions.first, answer_id: questions.first.current_answer_id, round_id: round.id), xhr: true }
           .to change(round.results, :count).by(1)
 
         expect(response).to be_successful
       end
+
+      it 'not returns check if result already exist' do
+        questions = create_list(:question, 2, theme: theme)
+        round     = create(:round, theme: theme)
+
+        first_question = questions.first
+        result         = create(:result, question_id: first_question.id, answer_id: first_question.current_answer_id, round_id: round.id)
+        expect{ get check_question_path(first_question, answer_id: first_question.current_answer_id, round_id: round.id), xhr: true }
+          .to change(round.results, :count).by(0)
+
+        expect(response).to be_successful
+      end
+
     end
   end
 
@@ -133,7 +146,7 @@ RSpec.describe 'Questions', type: :request do
     it 'not returns check' do
       questions = create_list(:question, 2, theme: theme)
       round = create(:round, theme: theme)
-      expect{ get check_question_path(questions.first, answers_id: questions.first.current_answer_id, round_id: round.id), xhr: true}
+      expect{ get check_question_path(questions.first, answer_id: questions.first.current_answer_id, round_id: round.id), xhr: true}
         .to change(round.results, :count).by(0)
     end
   end

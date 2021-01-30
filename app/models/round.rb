@@ -22,14 +22,18 @@ class Round < ApplicationRecord
   end
 
   def make_result!(question, answer_id)
-    result = question.answers.where(correct: true).first.id.to_s == answer_id
-    self.increment!(result ? :current_answers : :wrong_answers)
+    # create result if empty result for question on round
+    # increment current/answers count
+    if self.results.where(question_id: question, answer_id: answer_id).empty?
+      result = question.current_answer_id == answer_id.to_i
+      self.increment!(result ? :current_answers : :wrong_answers)
 
-    self.results.create!( question_id: question.id,
+      self.results.create!( question_id: question.id,
                             answer_id: answer_id,
                               success: result,
                         audit_comment: I18n.t((result ? 'results.success' : 'results.failed'), question: question.title))
-    return result
+      return result
+    end
   end
 
   private

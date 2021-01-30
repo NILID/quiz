@@ -26,7 +26,7 @@ class QuestionsController < ApplicationController
     authorize @question
     @answer_id = params[:answer_id]
     @round = Round.find(params[:round_id])
-    @result = @round.make_result!(@question, @answer_id)
+    @result = @round.make_result!(@question, @answer_id)# if @round.results.where(question_id: @question, answer_id: @answer_id).empty?
   end
 
   def edit

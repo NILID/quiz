@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :result do
     question
+    answer
     round
-    user
     success { false }
   end
 end
