@@ -26,10 +26,9 @@ RSpec.describe 'Rounds', type: :request do
     describe "#{role} should" do
       login_user(role)
 
-      it 'renders show' do
+      it 'not renders show' do
         get round_path(round)
-        expect(response).to be_successful
-        expect(response).to render_template(:show)
+        expect(response).to redirect_to(root_path)
       end
 
       it 'return new' do
@@ -44,7 +43,6 @@ RSpec.describe 'Rounds', type: :request do
         }.to change(Round, :count).by(0)
         expect(response).to redirect_to(root_path)
       end
-
     end
   end
 
@@ -62,12 +60,21 @@ RSpec.describe 'Rounds', type: :request do
       expect(response).to redirect_to(root_path)
     end
 
-    it 'renders result for own round' do
-      round.update_attribute(:user_id, @user.id)
-      expect{get result_round_path(round)}
-        .to change(Round.where(finished: true), :count).by(1)
-      expect(response).to be_successful
-      expect(response).to render_template(:result)
+    describe 'own round' do
+      let!(:own_round) { create(:round, user: @user) }
+
+      it 'get result' do
+        expect{get result_round_path(own_round)}
+          .to change(Round.where(finished: true), :count).by(1)
+        expect(response).to be_successful
+        expect(response).to render_template(:result)
+      end
+
+      it 'get show' do
+        get round_path(own_round)
+        expect(response).to be_successful
+        expect(response).to render_template(:show)
+      end
     end
   end
 

@@ -4,13 +4,12 @@ class RoundPolicy < ApplicationPolicy
   end
 
   def show?
-    !record.finished
+    (record.user_id == @user.id) && !record.finished
   end
 
   def result?
     record.user_id == @user.id || (@user.admin? || @user.moderator?)
   end
-
 
   def new?
     record.theme.questions_count > 0
