@@ -7,6 +7,5 @@ ru:
     add_new: + добавить в список новую тему
     choose: Выберите тему
     empty_questions: По данной теме пока нет ни одного вопроса
-    finished: Завершён
     questions_count: Число вопросов
     search_placeholder: Введите название

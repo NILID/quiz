@@ -1,3 +1,5 @@
 ru:
   rounds:
     current_wrong: Верно / Ошибка
+    finished: Завершён
+    unfinished: Пока не завершён

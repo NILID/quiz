@@ -1,6 +1,6 @@
 %tr
   %td
-    = link_to_if round.finished, rus_datetime(round.created_at), result_round_path(round)
+    = link_to_if (round.finished && policy(round).result?), rus_datetime(round.created_at), result_round_path(round)
   %td= round.theme.title
   %td.text-center
     %span.text-success= round.current_answers
@@ -8,6 +8,9 @@
     %span.text-error= round.wrong_answers
   %td
     - if round.finished
-      %span.text-muted= t('themes.finished')
+      %span.text-muted= t('rounds.finished')
     - else
-      = link_to t('actions.continue'), round
+      - if policy(round).show?
+        = link_to t('actions.continue'), round
+      - else
+        %span.text-muted= t('rounds.unfinished')
