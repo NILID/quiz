@@ -1,20 +1,14 @@
-%h1 Listing rounds
+.row
+  .col-12
+    %h1= t('titles.rounds')
 
-%table.table
-  %thead
-    %tr
-      %th Theme
-      %th User
-      %th Current answers
-      %th Wrong answers
-      %th Finished
-      %th
-  %tbody
-    - @rounds.each do |round|
-      %tr
-        %td= round.theme.title
-        %td= round.user.login
-        %td= round.current_answers
-        %td= round.wrong_answers
-        %td= round.finished
-        %td= link_to 'Show', result_round_path(round)
+    %table.table
+      %thead
+        %tr
+          %th= t('titles.date')
+          %th= User.model_name.human.capitalize
+          %th= Theme.model_name.human.capitalize
+          %th= t('rounds.current_wrong')
+          %th
+      %tbody
+        = render @rounds, user_info: true

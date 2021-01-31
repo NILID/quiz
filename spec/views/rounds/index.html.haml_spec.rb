@@ -5,13 +5,17 @@ RSpec.describe "rounds/index", type: :view do
     @rounds = create_list(:round, 2)
   end
 
+  let(:user) { create(:user, :admin) }
+
   it "renders a list of rounds" do
+    enable_pundit(view, user)
+
     render
+
     @rounds.each do |round|
-      assert_select "tr>td", text: round.theme.title.to_s, count: 1
+      assert_select "tr>td", text: "#{rus_datetime round.created_at}", count: 2
       assert_select "tr>td", text: round.user.login.to_s, count: 1
+      assert_select "tr>td", text: round.theme.title.to_s, count: 1
     end
-    # two finished equal false
-    assert_select "tr>td", text: false.to_s, count: 2
   end
 end

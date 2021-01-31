@@ -1,6 +1,8 @@
 %tr
   %td
     = link_to_if (round.finished && policy(round).result?), rus_datetime(round.created_at), result_round_path(round)
+  - if user_info
+    %td= link_to round.user.login, round.user
   %td= round.theme.title
   %td.text-center
     %span.text-success= round.current_answers

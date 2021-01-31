@@ -33,7 +33,7 @@
             %th= t('rounds.current_wrong')
             %th
         %tbody
-          = render @rounds
+          = render @rounds, user_info: false
   - else
     .col.col-12
       .empty-block
