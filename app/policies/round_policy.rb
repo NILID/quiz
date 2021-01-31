@@ -8,7 +8,7 @@ class RoundPolicy < ApplicationPolicy
   end
 
   def result?
-    true
+    record.user_id == @user.id || (@user.admin? || @user.moderator?)
   end
 
 

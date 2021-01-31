@@ -12,6 +12,13 @@ RSpec.describe 'Rounds', type: :request do
         expect(response).to be_successful
         expect(response).to render_template(:index)
       end
+
+      it 'renders result all users' do
+        expect{get result_round_path(round)}
+          .to change(Round.where(finished: true), :count).by(1)
+        expect(response).to be_successful
+        expect(response).to render_template(:result)
+      end
     end
   end
 
@@ -23,13 +30,6 @@ RSpec.describe 'Rounds', type: :request do
         get round_path(round)
         expect(response).to be_successful
         expect(response).to render_template(:show)
-      end
-
-      it 'renders result' do
-        expect{get result_round_path(round)}
-          .to change(Round.where(finished: true), :count).by(1)
-        expect(response).to be_successful
-        expect(response).to render_template(:result)
       end
 
       it 'return new' do
@@ -48,13 +48,26 @@ RSpec.describe 'Rounds', type: :request do
     end
   end
 
-
   describe 'User should' do
     login_user(:user)
 
     it 'not returns index' do
       get rounds_url
       expect(response).to redirect_to(root_path)
+    end
+
+    it 'not renders result if not own round' do
+      expect{get result_round_path(round)}
+        .to change(Round.where(finished: true), :count).by(0)
+      expect(response).to redirect_to(root_path)
+    end
+
+    it 'renders result for own round' do
+      round.update_attribute(:user_id, @user.id)
+      expect{get result_round_path(round)}
+        .to change(Round.where(finished: true), :count).by(1)
+      expect(response).to be_successful
+      expect(response).to render_template(:result)
     end
   end
 
